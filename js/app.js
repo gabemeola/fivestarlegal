@@ -1,0 +1,1 @@
+angular.module("fivestarApp", ["firebase", "ui.router", "ngAnimate"]);

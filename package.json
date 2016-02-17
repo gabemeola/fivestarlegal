@@ -1,0 +1,39 @@
+{
+  "name": "fivestarlegal",
+  "version": "1.0.0",
+  "description": "Form for 5 Star Legal Documents",
+  "main": "/js/entry.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabemeola/fivestarlegal.git"
+  },
+  "author": "Gabe M, Devin B",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gabemeola/fivestarlegal/issues"
+  },
+  "homepage": "https://github.com/gabemeola/fivestarlegal#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-ui-router": "^0.2.18",
+    "angularfire": "^1.1.3",
+    "webpack": "^1.12.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "image-webpack-loader": "^1.6.3",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
