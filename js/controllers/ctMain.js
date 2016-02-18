@@ -10,4 +10,28 @@ angular.module("fivestarApp")
 			}
 		};
 
+		$scope.basic = {
+			choice: null,
+			nameOfTrust: null,
+			husband: {
+				fullName: null,
+				dob: null,
+				phone: null,
+				email: null
+			},
+			wife: {
+				fullName: null,
+				dob: null,
+				phone: null,
+				email: null
+			},
+			address: null,
+			city: null,
+			county: null,
+			state: null,
+			zip: null
+		};
+		$scope.basicChoice = function (init) {
+			$scope.basic.choice = init;
+		}
 	}]);

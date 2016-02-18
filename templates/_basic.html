@@ -2,13 +2,15 @@
 	<h1>Living Trust Questionnaire</h1>
 	<div class="radio-wrapper">
 		<h4 class="right">Is this for an individual or a married couple?</h4>
-		<md-radio-button>Individual</md-radio-button>
-		<md-radio-button>Couple</md-radio-button>
+		<md-radio-group>
+			<md-radio-button ng-click="basicChoice(individual)" value="Individual">Individual</md-radio-button>
+			<md-radio-button ng-click="basicChoice(couple)" value="Couple">Couple</md-radio-button>
+		</md-radio-group>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Name of Trust</h4>
 		<div class="input-wrapper">
-			<input>
+			<input ng-model="basic.nameOfTrust">
 			<label>The Doe Family Trust or The Jane Doe Trust</label>
 		</div>
 	</div>
@@ -19,28 +21,28 @@
 	<div class="data-wrapper">
 		<h4 class="right">Full Name</h4>
 		<div class="input-wrapper">
-			<input/>
+			<input ng-model="basic.husband.fullName"/>
 			<label>John R. Doe</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Date of Birth</h4>
 		<div class="input-wrapper">
-			<input/>
+			<input ng-model="basic.husband.dob"/>
 			<label>7/20/1969</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Phone</h4>
 		<div class="input-wrapper">
-			<input>
+			<input ng-model="basic.husband.phone">
 			<label>312-555-1212</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Email</h4>
 		<div class="input-wrapper">
-			<input>
+			<input ng-model="basic.husband.email">
 		</div>
 	</div>
 </div>
@@ -50,40 +52,64 @@
 	<div class="data-wrapper">
 		<h4 class="right">Full Name</h4>
 		<div class="input-wrapper">
-			<input/>
+			<input ng-model="basic.wife.fullName"/>
 			<label>John R. Doe</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Date of Birth</h4>
 		<div class="input-wrapper">
-			<input/>
+			<input ng-model="basic.wife.dob"/>
 			<label>7/20/1969</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Phone</h4>
 		<div class="input-wrapper">
-			<input>
+			<input ng-model="basic.wife.phone">
 			<label>312-555-1212</label>
 		</div>
 	</div>
 	<div class="data-wrapper">
 		<h4 class="right">Email</h4>
 		<div class="input-wrapper">
-			<input>
+			<input ng-model="basic.wife.email">
 		</div>
 	</div>
 </div>
 <divider></divider>
 <div class="basic-home-address">
 	<h2>Home Address</h2>
-	<h4 class="right">Address</h4>
-	<input>
-	<h4 class="right">City</h4>
-	<input>
-	<h4 class="right">County</h4>
-	<input>
+	<div class="data-wrapper">
+		<h4 class="right">Address</h4>
+		<div class="input-wrapper">
+			<input ng-model="basic.address">
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="right">City</h4>
+		<div class="input-wrapper">
+			<input ng-model="basic.city">
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="right">County</h4>
+		<div class="input-wrapper">
+			<input ng-model="basic.county">
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="right">State</h4>
+		<div class="input-wrapper">
+			<input ng-model="basic.state">
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="right">Zip</h4>
+		<div class="input-wrapper">
+			<input>
+		</div>
+	</div>
 </div>
 
 <div class="data-wrapper">
