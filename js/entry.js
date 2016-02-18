@@ -14,7 +14,7 @@ require( '.\/app.js');
 require( '.\/Directives.js');
 
 //Controllers
-require( '.\/ctMain.js');
+require( '.\/controllers/ctMain.js');
 //End Of Controllers
 
 //Services
