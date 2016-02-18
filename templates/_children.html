@@ -1,1 +1,20 @@
-CHILDREN WORKING
+<div class="children">
+	<h2>Do you have any children?</h2>
+	<md-radio-group ng-model="children.choice.currentChildren">
+		<md-radio-button ng-click="currentChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="currentChildrenChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="children-current" ng-show="children.currentChildrenShow">
+		DOPE!
+	</div>
+	<divider></divider>
+	<h2>Is there a chance you will have or adopt children in the future?</h2>
+	<md-radio-group ng-model="children.choice.futureChildren">
+		<md-radio-button ng-click="futureChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="futureChildrenChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="children-future" ng-show="children.futureChildrenShow">
+		NICE!
+	</div>
+	<divider></divider>
+</div>

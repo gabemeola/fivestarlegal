@@ -9,7 +9,7 @@ angular.module("fivestarApp")
 				$mdSidenav('left').close();
 			}
 		};
-
+		//Basic Template
 		$scope.basic = {
 			choice: "individual",
 			individualShow: true,
@@ -39,7 +39,7 @@ angular.module("fivestarApp")
 			state: null,
 			zip: null
 		};
-		$scope.basicChoice = function (init) {
+		$scope.basicChoice = function(init) {
 			$scope.basic.choice = init;
 			if(init == "individual") {
 				$scope.basic.coupleShow = false;
@@ -48,5 +48,33 @@ angular.module("fivestarApp")
 				$scope.basic.individualShow = false;
 				$scope.basic.coupleShow = true;
 			}
-		}
+		};
+		//End of Basic
+		//Children Template
+		$scope.children = {
+			choice: {
+				currentChildren: "no",
+				futureChildren: "no"
+			},
+			currentChildrenShow: false,
+			futureChildrenShow: false
+		};
+		$scope.currentChildrenChoice = function(init) {
+			$scope.children.choice.currentChildren = init;
+			if(init == "yes") {
+				$scope.children.currentChildrenShow = true;
+			} else {
+				$scope.children.currentChildrenShow = false;
+			}
+		};
+		$scope.futureChildrenChoice = function(init) {
+			$scope.children.choice.futureChildren = init;
+			if(init == "yes") {
+				$scope.children.futureChildrenShow = true;
+			} else {
+				$scope.children.futureChildrenShow = false;
+			}
+		};
+		//End of Children
+
 	}]);
