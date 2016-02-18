@@ -1,5 +1,5 @@
 angular.module("fivestarApp")
-	.controller("ctMain", ["$scope", "$mdSidenav", "$compile", "$element", function($scope, $mdSidenav, $compile, $element) {
+	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
 		$scope.works = "It Works";
 
 		$scope.openLeftMenu = function(init) {
@@ -147,16 +147,38 @@ angular.module("fivestarApp")
 		//Beneficiaries Template
 		$scope.beneficiaries = {
 			choice: {
-				split: null
+				split: "equally",
+				age: "none"
 			},
-			percentageShow: false
+			percentageShow: false,
+			oneShow: false,
+			twoShow: false,
+			threeShow: false
 		};
 		$scope.splitChoice = function(init) {
-			$scope.beneficiaries.choice.split = init;
 			if(init == "equally") {
 				$scope.beneficiaries.percentageShow = false;
 			} else {
 				$scope.beneficiaries.percentageShow = true;
+			}
+		};
+		$scope.ageChoice = function(init) {
+			if(init == "one") {
+				$scope.beneficiaries.threeShow = false;
+				$scope.beneficiaries.twoShow = false;
+				$scope.beneficiaries.oneShow = true;
+			} else if(init == "two") {
+				$scope.beneficiaries.oneShow = false;
+				$scope.beneficiaries.threeShow = false;
+				$scope.beneficiaries.twoShow = true;
+			} else if(init == "three") {
+				$scope.beneficiaries.oneShow = false;
+				$scope.beneficiaries.twoShow = false;
+				$scope.beneficiaries.threeShow = true;
+			} else {
+				$scope.beneficiaries.oneShow = false;
+				$scope.beneficiaries.twoShow = false;
+				$scope.beneficiaries.threeShow = false;
 			}
 		};
 		//End of Beneficiaries Template

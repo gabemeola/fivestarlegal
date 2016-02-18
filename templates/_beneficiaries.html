@@ -9,22 +9,22 @@
 		</md-radio-button>
 	</md-radio-group>
 	<div class="beneficiaries-percentageChoice" ng-show="beneficiaries.percentageShow">
-
+		working
 	</div>
 	<divider></divider>
 	<h2>Ages for beneficiaries to receive their inheritance</h2>
 	<h5>Prior to reaching the age(s) indicated below, the successor Trustee(s) will manage the money for the beneficiaries, and the money will be used for health, education, maintenance, support, etc.</h5>
 	<br>
-	<md-radio-group ng-model="basic.choice">
-		<md-radio-button ng-click="basicChoice('individual')" value="equally">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
+	<md-radio-group ng-model="beneficiaries.choice.age">
+		<md-radio-button ng-click="ageChoice('none')" value="none">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
 		<br>
-		<md-radio-button ng-click="basicChoice('couple')" value="percentages">Distribution at one age
+		<md-radio-button ng-click="ageChoice('one')" value="one">Distribution at one age
 		</md-radio-button>
 		<br>
-		<md-radio-button ng-click="basicChoice('couple')" value="percentages">Distribution at two ages
+		<md-radio-button ng-click="ageChoice('two')" value="two">Distribution at two ages
 		</md-radio-button>
 		<br>
-		<md-radio-button ng-click="basicChoice('couple')" value="percentages">Distribution at three ages
+		<md-radio-button ng-click="ageChoice('three')" value="three">Distribution at three ages
 		</md-radio-button>
 	</md-radio-group>
 	<divider></divider>

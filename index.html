@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 	<body ng-controller="ctMain">
-		<md-sidenav md-component-id="left" class="navbar-left" md-is-locked-open="$mdMedia('gt-md')">
+		<md-sidenav md-component-id="left" class="navbar-left" md-is-locked-open="$mdMedia('min-width: 700px')">
 			<navbar></navbar>
 		</md-sidenav>
 		<md-button ng-click="openLeftMenu('open')" class="md-primary toggle-btn">
