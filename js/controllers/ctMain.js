@@ -33,11 +33,21 @@ angular.module("fivestarApp")
 				phone: null,
 				email: null
 			},
-			address: null,
-			city: null,
-			county: null,
-			state: null,
-			zip: null
+			homeAddress: {
+				address: null,
+				city: null,
+				county: null,
+				state: null,
+				zip: null
+			},
+			mailingAddress: {
+				sameAs: true,
+				address: null,
+				city: null,
+				county: null,
+				state: null,
+				zip: null
+			}
 		};
 		$scope.basicChoice = function(init) {
 			$scope.basic.choice = init;
