@@ -3,4 +3,9 @@ angular.module("fivestarApp")
 		return {
 			templateUrl: "./templates/_navbar.html"
 		}
+	})
+	.directive("divider", function() {
+		return {
+			template: "<div class='divider'></div>"
+		}
 	});

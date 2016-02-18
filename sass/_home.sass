@@ -1,15 +1,17 @@
 .toggle-btn
 	display: block
 .content-wrapper
-	width: 100vw
+	min-width: 100vw
+	width: auto
 	height: 90vh
 	position: relative
 	display: inline-block
-	@media only screen and (min-width: 1280px)
+	@media only screen and (min-width: $medDevice)
 		width: 58vw
+		min-width: 58vw
 	.ui-view-wrapper
 		width: 80%
-		height: 100%
+		height: auto
 		display: block
 		background-color: whitesmoke
 		margin: 0 auto
