@@ -39,7 +39,7 @@ angular.module("fivestarApp", ["firebase", "ui.router", "ngAnimate", "ngMaterial
 			})
 			.state('property', {
 				url: '/property',
-				templateUrl: './templates/property.html',
+				templateUrl: './templates/_property.html',
 				controller: null
 			})
 			.state('review', {
