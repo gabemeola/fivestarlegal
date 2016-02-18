@@ -11,7 +11,9 @@ angular.module("fivestarApp")
 		};
 
 		$scope.basic = {
-			choice: null,
+			choice: "individual",
+			individualShow: true,
+			coupleShow: false,
 			nameOfTrust: null,
 			husband: {
 				fullName: null,
@@ -33,5 +35,12 @@ angular.module("fivestarApp")
 		};
 		$scope.basicChoice = function (init) {
 			$scope.basic.choice = init;
+			if(init == "individual") {
+				$scope.basic.coupleShow = false;
+				$scope.basic.individualShow = true;
+			} else if(init == "couple") {
+				$scope.basic.individualShow = false;
+				$scope.basic.coupleShow = true;
+			}
 		}
 	}]);
