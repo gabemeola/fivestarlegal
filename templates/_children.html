@@ -1,1 +1,85 @@
-CHILDREN WORKING
+<div class="children">
+	<h2>Do you have any children?</h2>
+	<md-radio-group ng-model="children.choice.currentChildren">
+		<md-radio-button ng-click="currentChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="currentChildrenChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="children-current" ng-show="children.currentChildrenShow">
+		<div class="children-repeater" ng-repeat="child in children.currentChildren">
+			<div class="data-wrapper" id="child">
+				<h4 class="top">Child's Full Name</h4>
+				<div class="input-wrapper">
+					<input ng-model="child.name">
+				</div>
+			</div><div class="data-wrapper">
+				<h4 class="top">Date of Birth</h4>
+				<div class="input-wrapper">
+					<input ng-model="child.dob">
+				</div>
+			</div>
+		</div>
+		<div class="child-current-addnew">
+			<div ng-click="addnewChild('current')">ADD NEW CHILD</div>
+		</div>
+	</div>
+	<divider></divider>
+	<h2>Is there a chance you will have or adopt children in the future?</h2>
+	<md-radio-group ng-model="children.choice.futureChildren">
+		<md-radio-button ng-click="futureChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="futureChildrenChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="children-future" ng-show="children.futureChildrenShow">
+		NICE!
+	</div>
+	<div class="children-couple-choices" ng-show="basic.coupleShow">
+		<divider></divider>
+		<h2>Does the <i>husband</i> have any children from a previous relationship?</h2>
+		<md-radio-group ng-model="children.choice.husbandChildren">
+			<md-radio-button ng-click="husbandChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+			<md-radio-button ng-click="husbandChildrenChoice('no')" value="no">No</md-radio-button>
+		</md-radio-group>
+		<div class="children-husband" ng-show="children.husbandChildrenShow">
+			<div class="children-repeater" ng-repeat="child in children.husbandChildren">
+				<div class="data-wrapper" id="child">
+					<h4 class="top">Child's Full Name</h4>
+					<div class="input-wrapper">
+						<input ng-model="child.name">
+					</div>
+				</div><div class="data-wrapper">
+				<h4 class="top">Date of Birth</h4>
+				<div class="input-wrapper">
+					<input ng-model="child.dob">
+				</div>
+			</div>
+			</div>
+			<div class="child-current-addnew">
+				<div ng-click="addnewChild('husband')">ADD NEW CHILD</div>
+			</div>
+		</div>
+		<divider></divider>
+		<h2>Does the <i>wife</i> have any children from a previous relationship?</h2>
+		<md-radio-group ng-model="children.choice.wifeChildren">
+			<md-radio-button ng-click="wifeChildrenChoice('yes')" value="yes">Yes</md-radio-button>
+			<md-radio-button ng-click="wifeChildrenChoice('no')" value="no">No</md-radio-button>
+		</md-radio-group>
+		<div class="children-wife" ng-show="children.wifeChildrenShow">
+			<div class="children-repeater" ng-repeat="child in children.wifeChildren">
+				<div class="data-wrapper" id="child">
+					<h4 class="top">Child's Full Name</h4>
+					<div class="input-wrapper">
+						<input ng-model="child.name">
+					</div>
+				</div><div class="data-wrapper">
+				<h4 class="top">Date of Birth</h4>
+				<div class="input-wrapper">
+					<input ng-model="child.dob">
+				</div>
+			</div>
+			</div>
+			<div class="child-current-addnew">
+				<div ng-click="addnewChild('wife')">ADD NEW CHILD</div>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+</div>

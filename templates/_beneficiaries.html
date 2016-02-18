@@ -1,1 +1,31 @@
-BENEFICIARIES WORKING
+<div class="beneficiaries">
+	<h2>Beneficiaries</h2>
+	<h5>These are the people and/or organizations to which the assets are left. They may be children, grandchildren, other family members, friends, charities, organizations, etc.</h5>
+	<br>
+	<md-radio-group ng-model="beneficiaries.choice.split">
+		<md-radio-button ng-click="splitChoice('equally')" value="equally">We would like to divide our assets equally between all of our children</md-radio-button>
+		<br>
+		<md-radio-button ng-click="splitChoice('percentage')" value="percentage">We would like to divide our assets between our children and/or another person(s) and/or organization(s) based on percentages
+		</md-radio-button>
+	</md-radio-group>
+	<div class="beneficiaries-percentageChoice" ng-show="beneficiaries.percentageShow">
+		working
+	</div>
+	<divider></divider>
+	<h2>Ages for beneficiaries to receive their inheritance</h2>
+	<h5>Prior to reaching the age(s) indicated below, the successor Trustee(s) will manage the money for the beneficiaries, and the money will be used for health, education, maintenance, support, etc.</h5>
+	<br>
+	<md-radio-group ng-model="beneficiaries.choice.age">
+		<md-radio-button ng-click="ageChoice('none')" value="none">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
+		<br>
+		<md-radio-button ng-click="ageChoice('one')" value="one">Distribution at one age
+		</md-radio-button>
+		<br>
+		<md-radio-button ng-click="ageChoice('two')" value="two">Distribution at two ages
+		</md-radio-button>
+		<br>
+		<md-radio-button ng-click="ageChoice('three')" value="three">Distribution at three ages
+		</md-radio-button>
+	</md-radio-group>
+	<divider></divider>
+</div>

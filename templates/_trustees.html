@@ -1,1 +1,48 @@
-TRUSTEES WORKING
+<div class="trustrees">
+	<h2>Successor Trustee(s)</h2>
+	<h5>When you pass away, who will be appointed to manage your finances and settle your estate?</h5>
+	<div class="data-wrapper">
+		<h4 class="top">1st Choice</h4>
+		<div class="input-wrapper">
+			<input>
+			<label>Jane R. Doe</label>
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="top">2nd Choice <span class="optional">(optional)</span></h4>
+		<div class="input-wrapper">
+			<input>
+			<label>Jane R. Doe</label>
+		</div>
+	</div>
+	<br/>
+	<md-checkbox ng-model="trustees.coTrustees" ng-true-value="true" ng-false-value="false">
+		Trustees should act together as Co-Trustees.
+		<br>
+		<span class="optional">This means that they would be required to work together to make decisions.</span>
+	</md-checkbox>
+	<divider></divider>
+	<h2>Guardian(s) for Minor Children</h2>
+	<h5>When you pass away, if there are children under the age of 18, who will act as their Guardian(s)?</h5>
+	<div class="data-wrapper">
+		<h4 class="top">1st Choice</h4>
+		<div class="input-wrapper">
+			<input>
+			<label>Jane R. Doe</label>
+		</div>
+	</div>
+	<div class="data-wrapper">
+		<h4 class="top">2nd Choice <span class="optional">(optional)</span></h4>
+		<div class="input-wrapper">
+			<input>
+			<label>Jane R. Doe</label>
+		</div>
+	</div>
+	<br>
+	<md-checkbox ng-model="trustees.coGuardians" ng-true-value="true" ng-false-value="false">
+		Guardians should act together as Co-Guardians.
+		<br>
+		<span class="optional">This means that they would be required to work together to make decisions.</span>
+	</md-checkbox>
+	<divider></divider>
+</div>
