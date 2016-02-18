@@ -2,6 +2,9 @@
 <html data-ng-app="fivestarApp">
 <head>
 	<title>Laser Marketing Group</title>
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 	<body ng-controller="ctMain">
@@ -11,7 +14,11 @@
 		<md-button ng-click="openLeftMenu('open')" class="md-primary toggle-btn">
 			Toggle left
 		</md-button>
-		<ui-view></ui-view>
+		<div class="content-wrapper">
+			<div class="ui-view-wrapper">
+				<ui-view></ui-view>
+			</div>
+		</div>
 		<script src="js/bundle.js"></script>
 	</body>
 </html>

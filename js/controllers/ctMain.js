@@ -5,8 +5,9 @@ angular.module("fivestarApp")
 		$scope.openLeftMenu = function(init) {
 			if(init == "open") {
 				$mdSidenav('left').toggle();
-			} else if (init == "close"){
+			} else if(init == "close") {
 				$mdSidenav('left').close();
 			}
 		};
+
 	}]);
