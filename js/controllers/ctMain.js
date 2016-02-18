@@ -65,10 +65,14 @@ angular.module("fivestarApp")
 		$scope.children = {
 			choice: {
 				currentChildren: "no",
-				futureChildren: "no"
+				futureChildren: "no",
+				husbandChildren: "no",
+				wifeChildren: "no"
 			},
 			currentChildrenShow: false,
-			futureChildrenShow: false
+			futureChildrenShow: false,
+			husbandChildrenShow: false,
+			wifeChildrenShow: false
 		};
 		$scope.currentChildrenChoice = function(init) {
 			$scope.children.choice.currentChildren = init;
@@ -84,6 +88,22 @@ angular.module("fivestarApp")
 				$scope.children.futureChildrenShow = true;
 			} else {
 				$scope.children.futureChildrenShow = false;
+			}
+		};
+		$scope.husbandChildrenChoice = function(init) {
+			$scope.children.choice.husbandChildren = init;
+			if(init == "yes") {
+				$scope.children.husbandChildrenShow = true;
+			} else {
+				$scope.children.husbandChildrenShow = false;
+			}
+		};
+		$scope.wifeChildrenChoice = function(init) {
+			$scope.children.choice.wifeChildren = init;
+			if(init == "yes") {
+				$scope.children.wifeChildrenShow = true;
+			} else {
+				$scope.children.wifeChildrenShow = false;
 			}
 		};
 		//End of Children
