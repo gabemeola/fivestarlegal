@@ -3,6 +3,7 @@ import angular from "angular";
 import ngAnimate from "angular-animate";
 import ngAria from "angular-aria";
 import uirouter from "angular-ui-router";
+import ngMaterial from "angular-material";
 import angularfire from "angularfire";
 import "firebase";
 //
@@ -13,7 +14,7 @@ require( '.\/app.js');
 require( '.\/Directives.js');
 
 //Controllers
-require( '.\/ctMain.js');
+require( '.\/controllers/ctMain.js');
 //End Of Controllers
 
 //Services
