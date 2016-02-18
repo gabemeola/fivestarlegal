@@ -8,7 +8,6 @@ module.exports = {
 	},
 	output: {
 		path: __dirname,
-		//publicPath: mainPath,
 		filename: "./js/bundle.js" //Bundled Javascript Webpack Spits out.
 	},
 	devServer: { //Allows webpack-dev-server to be live reloaded
@@ -33,7 +32,7 @@ module.exports = {
 			{ //Optimizes Images
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				loaders: [
-					'file?hash=sha512&digest=hex&name=/min-icons/[hash].[ext]',
+					'file?hash=sha512&digest=hex&name=./min-icons/[hash].[ext]',
 					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true'
 				]
 			}
