@@ -5,7 +5,13 @@
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
 	<body ng-controller="ctMain">
+		<md-sidenav md-component-id="left" class="navbar-left" md-is-locked-open="$mdMedia('gt-md')">
+			<navbar></navbar>
+		</md-sidenav>
 		{{works}}
+		<md-button ng-click="openLeftMenu()" class="md-primary">
+			Toggle left
+		</md-button>
 		<script src="js/bundle.js"></script>
 	</body>
 </html>

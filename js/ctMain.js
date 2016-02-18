@@ -1,4 +1,8 @@
 angular.module("fivestarApp")
-	.controller("ctMain", ["$scope", function($scope) {
+	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
 		$scope.works = "It Works";
+
+		$scope.openLeftMenu = function() {
+			$mdSidenav('left').toggle();
+		};
 	}]);
