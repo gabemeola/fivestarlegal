@@ -1,5 +1,5 @@
 angular.module("fivestarApp")
-	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
+	.controller("ctMain", ["$scope", "$mdSidenav", "$compile", "$element", function($scope, $mdSidenav, $compile, $element) {
 		$scope.works = "It Works";
 
 		$scope.openLeftMenu = function(init) {
@@ -11,9 +11,9 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: "individual",
-			individualShow: true,
-			coupleShow: false,
+			choice: "couple",
+			individualShow: false,
+			coupleShow: true,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -69,6 +69,29 @@ angular.module("fivestarApp")
 				husbandChildren: "no",
 				wifeChildren: "no"
 			},
+			currentChildren: {
+				1: {
+					name: null,
+					dob: null
+				}
+			},
+			husbandChildren: {
+				1: {
+					name: null,
+					dob: null
+				}
+			},
+			wifeChildren: {
+				1: {
+					name: null,
+					dob: null
+				}
+			},
+			childAmounts: {
+				current: 1,
+				husband: 1,
+				wife: 1
+			},
 			currentChildrenShow: false,
 			futureChildrenShow: false,
 			husbandChildrenShow: false,
@@ -105,6 +128,16 @@ angular.module("fivestarApp")
 			} else {
 				$scope.children.wifeChildrenShow = false;
 			}
+		};
+		$scope.addnewChild = function(init) {
+			$scope.children.childAmounts[init]++;
+			console.warn($scope.children.childAmounts[init]);
+			var childrenAmount = $scope.children.childAmounts[init];
+			$scope.children[init + 'Children'][childrenAmount] = {
+				name: null,
+				dob: null
+			};
+			console.warn($scope.children);
 		};
 		//End of Children
 
