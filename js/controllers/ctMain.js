@@ -11,9 +11,9 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: "couple",
-			individualShow: false,
-			coupleShow: true,
+			choice: "individual",
+			individualShow: true,
+			coupleShow: false,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -148,5 +148,7 @@ angular.module("fivestarApp")
 		};
 		//End of Trustees
 
+		//Beneficiaries Template
 
+		//End of Beneficiaries Template
 	}]);
