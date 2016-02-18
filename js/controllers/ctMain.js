@@ -15,6 +15,12 @@ angular.module("fivestarApp")
 			individualShow: true,
 			coupleShow: false,
 			nameOfTrust: null,
+			your: {
+				fullName: null,
+				dob: null,
+				phone: null,
+				email: null
+			},
 			husband: {
 				fullName: null,
 				dob: null,

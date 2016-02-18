@@ -16,6 +16,38 @@
 	</div>
 </div>
 <divider></divider>
+<div class="basic-trust-questionnaire-individualChoice" ng-show="basic.individualShow">
+	<div class="your-info">
+		<h2>Your Information</h2>
+		<div class="data-wrapper">
+			<h4 class="right">Full Name</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.your.fullName"/>
+				<label>John R. Doe</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">Date of Birth</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.your.dob"/>
+				<label>7/20/1969</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">Phone</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.your.phone">
+				<label>312-555-1212</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">Email</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.your.email">
+			</div>
+		</div>
+	</div>
+</div>
 <div class="basic-trust-questionnaire-coupleChoice" ng-show="basic.coupleShow">
 	<div class="basic-husband-info">
 		<h2>Husband's Information</h2>
