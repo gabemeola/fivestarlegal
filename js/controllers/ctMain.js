@@ -76,22 +76,18 @@ angular.module("fivestarApp")
 				}
 			},
 			husbandChildren: {
-				1: {
+				2: {
 					name: null,
 					dob: null
 				}
 			},
 			wifeChildren: {
-				1: {
+				3: {
 					name: null,
 					dob: null
 				}
 			},
-			childAmounts: {
-				current: 1,
-				husband: 1,
-				wife: 1
-			},
+			childAmount: 3,
 			currentChildrenShow: false,
 			futureChildrenShow: false,
 			husbandChildrenShow: false,
@@ -130,9 +126,9 @@ angular.module("fivestarApp")
 			}
 		};
 		$scope.addnewChild = function(init) {
-			$scope.children.childAmounts[init]++;
-			console.warn($scope.children.childAmounts[init]);
-			var childrenAmount = $scope.children.childAmounts[init];
+			$scope.children.childAmount++;
+			console.warn($scope.children.childAmount);
+			var childrenAmount = $scope.children.childAmount;
 			$scope.children[init + 'Children'][childrenAmount] = {
 				name: null,
 				dob: null
@@ -149,6 +145,19 @@ angular.module("fivestarApp")
 		//End of Trustees
 
 		//Beneficiaries Template
-
+		$scope.beneficiaries = {
+			choice: {
+				split: null
+			},
+			percentageShow: false
+		};
+		$scope.splitChoice = function(init) {
+			$scope.beneficiaries.choice.split = init;
+			if(init == "equally") {
+				$scope.beneficiaries.percentageShow = false;
+			} else {
+				$scope.beneficiaries.percentageShow = true;
+			}
+		};
 		//End of Beneficiaries Template
 	}]);
