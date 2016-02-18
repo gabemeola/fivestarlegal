@@ -50,6 +50,7 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Basic
+
 		//Children Template
 		$scope.children = {
 			choice: {
@@ -76,5 +77,13 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Children
+
+		//Trustees Template
+		$scope.trustees = {
+			coTrustees: false,
+			coGuardians: false
+		};
+		//End of Trustees
+
 
 	}]);
