@@ -5,7 +5,7 @@
 	<md-radio-group ng-model="beneficiaries.choice.split">
 		<md-radio-button ng-click="splitChoice('equally')" value="equally">We would like to divide our assets equally between all of our children</md-radio-button>
 		<br>
-		<md-radio-button ng-click="splitChoice('percentage')" value="percentage">We would like to divide our assets between our children and/or another person(s) and/or organization(s) based on percentages
+		<md-radio-button ng-click="splitChoice('percentage')" value="percentage">We would like to divide our assets between our children <i>and/or</i> another person(s) and/or organization(s) based on <i>percentages</i>
 		</md-radio-button>
 	</md-radio-group>
 	<div class="beneficiaries-percentageChoice" ng-show="beneficiaries.percentageShow">

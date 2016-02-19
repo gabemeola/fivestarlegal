@@ -160,7 +160,28 @@ angular.module("fivestarApp")
 				$scope.beneficiaries.percentageShow = false;
 			} else {
 				$scope.beneficiaries.percentageShow = true;
+				$scope.childGrabber();
 			}
+		};
+		$scope.childGrabber = function () {
+			var currentChildren = $scope.children.currentChildren,
+					husbandChildren = $scope.children.husbandChildren,
+					wifeChildren = $scope.children.wifeChildren,
+					splitedChilds = [];
+
+			var concater = function(data) {
+				console.warn(data);
+				Object.getOwnPropertyNames(data).forEach(function(val) {
+					var child = data[val];
+					splitedChilds.push(child);
+				});
+				console.log(splitedChilds);
+			};
+
+			concater(currentChildren);
+			concater(husbandChildren);
+			concater(wifeChildren);
+			$scope.concatChildren = splitedChilds;
 		};
 		$scope.ageChoice = function(init) {
 			if(init == "one") {
