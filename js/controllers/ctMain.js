@@ -19,7 +19,9 @@ angular.module("fivestarApp")
 			var concater = function(data) {
 				Object.getOwnPropertyNames(data).forEach(function(val) {
 					var child = data[val];
-					splitedChilds.push(child);
+					if(child.name && child.dob) {
+						splitedChilds.push(child);
+					}
 				});
 			};
 
@@ -90,8 +92,8 @@ angular.module("fivestarApp")
 			},
 			currentChildren: {
 				1: {
-					name: null,
-					dob: null
+					name: "gabe",
+					dob: "04/26/1997"
 				}
 			},
 			husbandChildren: {

@@ -9,7 +9,12 @@
 		</md-radio-button>
 	</md-radio-group>
 	<div class="beneficiaries-percentageChoice" ng-show="beneficiaries.percentageShow">
-		working
+		<div class="child-percentage" ng-repeat="child in concatChildren">
+			<p>{{child.name}}</p>
+			<div class="child-percentage-inside">
+				<input type="number">
+			</div>
+		</div>
 	</div>
 	<divider></divider>
 	<h2>Ages for beneficiaries to receive their inheritance</h2>
@@ -29,3 +34,6 @@
 	</md-radio-group>
 	<divider></divider>
 </div>
+<md-select ng-model="childselect">
+	<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
+</md-select>
