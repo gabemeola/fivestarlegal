@@ -12,17 +12,23 @@
 			li
 				a
 					font-size: 14px
-					font-weight: bold
+					font-weight: 500
 					display: block
 					line-height: 20px
 					padding: 10px 5px 10px 15px
 					position: relative
 					background-color: transparent
+					-webkit-transition: $transition
+					-moz-transition: $transition
+					-o-transition: $transition
 					transition: $transition
 					&:hover
 						background-color: rgb(232, 232, 232)
 		.navbar-active
 			#active
+				-webkit-transition: $transition
+				-moz-transition: $transition
+				-o-transition: $transition
 				transition: $transition
 				color: rgb(24, 188, 156)
 				font-weight: 800

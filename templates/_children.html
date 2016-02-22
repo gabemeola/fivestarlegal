@@ -18,8 +18,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="child-current-addnew">
-			<div ng-click="addnewChild('current')">ADD NEW CHILD</div>
+		<div class="addnew-data">
+			<div ng-click="addnewChild('current')">+ add another child</div>
 		</div>
 	</div>
 	<divider></divider>
@@ -28,9 +28,6 @@
 		<md-radio-button ng-click="futureChildrenChoice('yes')" value="yes">Yes</md-radio-button>
 		<md-radio-button ng-click="futureChildrenChoice('no')" value="no">No</md-radio-button>
 	</md-radio-group>
-	<div class="children-future" ng-show="children.futureChildrenShow">
-		NICE!
-	</div>
 	<div class="children-couple-choices" ng-show="basic.coupleShow">
 		<divider></divider>
 		<h2>Does the <i>husband</i> have any children from a previous relationship?</h2>
@@ -52,8 +49,8 @@
 				</div>
 			</div>
 			</div>
-			<div class="child-current-addnew">
-				<div ng-click="addnewChild('husband')">ADD NEW CHILD</div>
+			<div class="addnew-data">
+				<div ng-click="addnewChild('husband')">+ add another child</div>
 			</div>
 		</div>
 		<divider></divider>
@@ -76,8 +73,8 @@
 				</div>
 			</div>
 			</div>
-			<div class="child-current-addnew">
-				<div ng-click="addnewChild('wife')">ADD NEW CHILD</div>
+			<div class="addnew-data">
+				<div ng-click="addnewChild('wife')">+ add another child</div>
 			</div>
 		</div>
 	</div>

@@ -9,11 +9,33 @@ angular.module("fivestarApp")
 				$mdSidenav('left').close();
 			}
 		};
+
+		$scope.childGrabber = function () {
+			var currentChildren = $scope.children.currentChildren,
+				husbandChildren = $scope.children.husbandChildren,
+				wifeChildren = $scope.children.wifeChildren,
+				splitedChilds = [];
+
+			var concater = function(data) {
+				Object.getOwnPropertyNames(data).forEach(function(val) {
+					var child = data[val];
+					if(child.name && child.dob) {
+						splitedChilds.push(child);
+					}
+				});
+			};
+
+			concater(currentChildren);
+			concater(husbandChildren);
+			concater(wifeChildren);
+			$scope.concatChildren = splitedChilds;
+		};
 		//Basic Template
 		$scope.basic = {
-			choice: "individual",
-			individualShow: true,
+			choice: null,
+			individualShow: false,
 			coupleShow: false,
+			dataShow: false,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -51,6 +73,7 @@ angular.module("fivestarApp")
 		};
 		$scope.basicChoice = function(init) {
 			$scope.basic.choice = init;
+			$scope.basic.dataShow = true;
 			if(init == "individual") {
 				$scope.basic.coupleShow = false;
 				$scope.basic.individualShow = true;
@@ -71,8 +94,8 @@ angular.module("fivestarApp")
 			},
 			currentChildren: {
 				1: {
-					name: null,
-					dob: null
+					name: "gabe",
+					dob: "04/26/1997"
 				}
 			},
 			husbandChildren: {
@@ -103,11 +126,6 @@ angular.module("fivestarApp")
 		};
 		$scope.futureChildrenChoice = function(init) {
 			$scope.children.choice.futureChildren = init;
-			if(init == "yes") {
-				$scope.children.futureChildrenShow = true;
-			} else {
-				$scope.children.futureChildrenShow = false;
-			}
 		};
 		$scope.husbandChildrenChoice = function(init) {
 			$scope.children.choice.husbandChildren = init;
@@ -160,6 +178,7 @@ angular.module("fivestarApp")
 				$scope.beneficiaries.percentageShow = false;
 			} else {
 				$scope.beneficiaries.percentageShow = true;
+				$scope.childGrabber();
 			}
 		};
 		$scope.ageChoice = function(init) {
@@ -182,4 +201,92 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Beneficiaries Template
+
+		//Power Template
+		$scope.power = {
+			choice: {
+				husbandPrimaryAgent: "yes",
+				wifePrimaryAgent: "yes"
+			},
+			individual: {
+				coAgents: false
+			},
+			couple: {
+				husband: {
+					coAgents: false
+				},
+				wife: {
+					coAgents: false
+				}
+			},
+			husbandPrimaryAgentShow: true,
+			altHusbandPrimaryAgentShow: false,
+			wifePrimaryAgentShow: true,
+			altWifePrimaryAgentShow: false
+		};
+		$scope.powerHusbandPrimaryAgent = function (init) {
+			$scope.power.choice.husbandPrimaryAgent = init;
+			if(init == "yes") {
+				$scope.power.husbandPrimaryAgentShow = true;
+				$scope.power.altHusbandPrimaryAgentShow = false;
+			} else {
+				$scope.power.husbandPrimaryAgentShow = false;
+				$scope.power.altHusbandPrimaryAgentShow = true;
+			}
+		};
+		$scope.powerWifePrimaryAgent = function (init) {
+			$scope.power.choice.wifePrimaryAgent = init;
+			if(init == "yes") {
+				$scope.power.wifePrimaryAgentShow = true;
+				$scope.power.altWifePrimaryAgentShow = false;
+			} else {
+				$scope.power.wifePrimaryAgentShow = false;
+				$scope.power.altWifePrimaryAgentShow = true;
+			}
+		};
+		//End of Power Template
+
+		//Healthcare Template
+		$scope.healthcare = {
+			choice: {
+				husbandPrimaryAgent: "yes",
+				wifePrimaryAgent: "yes"
+			},
+			individual: {
+				coAgents: false
+			},
+			couple: {
+				husband: {
+					coAgents: false
+				},
+				wife: {
+					coAgents: false
+				}
+			},
+			husbandPrimaryAgentShow: true,
+			altHusbandPrimaryAgentShow: false,
+			wifePrimaryAgentShow: true,
+			altWifePrimaryAgentShow: false
+		};
+		$scope.healthcareHusbandPrimaryAgent = function (init) {
+			$scope.healthcare.choice.husbandPrimaryAgent = init;
+			if(init == "yes") {
+				$scope.healthcare.husbandPrimaryAgentShow = true;
+				$scope.healthcare.altHusbandPrimaryAgentShow = false;
+			} else {
+				$scope.healthcare.husbandPrimaryAgentShow = false;
+				$scope.healthcare.altHusbandPrimaryAgentShow = true;
+			}
+		};
+		$scope.healthcareWifePrimaryAgent = function (init) {
+			$scope.healthcare.choice.wifePrimaryAgent = init;
+			if(init == "yes") {
+				$scope.healthcare.wifePrimaryAgentShow = true;
+				$scope.healthcare.altWifePrimaryAgentShow = false;
+			} else {
+				$scope.healthcare.wifePrimaryAgentShow = false;
+				$scope.healthcare.altWifePrimaryAgentShow = true;
+			}
+		};
+		//End of Healthcare Template
 	}]);

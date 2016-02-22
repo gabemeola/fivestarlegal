@@ -1,1 +1,130 @@
-POWER WORKING
+<div class="power">
+	<h1>Durable Power of Attorney</h1>
+	<br>
+	<h5>This is who will manage your finances and make legal decisions for you if you are incapacitated, but still alive.</h5>
+	<divider></divider>
+	<div class="power-couple" ng-show="basic.coupleShow">
+		<div class="power-couple-husband">
+			<h2>Husband's Durable Power Of Attorney</h2>
+			<div class="radio-wrapper">
+				<h4 class="right">Will your spouse be your primary agent?</h4>
+				<md-radio-group ng-model="power.choice.husbandPrimaryAgent">
+					<md-radio-button ng-click="powerHusbandPrimaryAgent('yes')" value="yes">Yes</md-radio-button>
+					<md-radio-button ng-click="powerHusbandPrimaryAgent('no')" value="no">No</md-radio-button>
+				</md-radio-group>
+			</div>
+			<div class="power-couple-husbandPrimaryAgent" ng-show="power.husbandPrimaryAgentShow">
+				<h2 class="primary-agent">Primary Agent: {{basic.husband.fullName}}</h2>
+				<div class="data-wrapper">
+					<h4 class="top">1st Alternate Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.husbandPrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.husbandPrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<div class="power-couple-altPrimaryAgent" ng-show="power.altHusbandPrimaryAgentShow">
+				<div class="data-wrapper">
+					<h4 class="top">1st Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.altHusbandPrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.altHusbandPrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<br>
+			<md-checkbox ng-model="power.couple.husband.coAgents" ng-true-value="true" ng-false-value="false">
+				Agents should act together as Co-Agents.
+				<br>
+				<span class="optional">This means that they would be required to work together to make decisions.</span>
+			</md-checkbox>
+		</div>
+		<divider></divider>
+		<div class="power-couple-wife">
+			<h2>Wife's Durable Power Of Attorney</h2>
+			<div class="radio-wrapper">
+				<h4 class="right">Will your spouse be your primary agent?</h4>
+				<md-radio-group ng-model="power.choice.wifePrimaryAgent">
+					<md-radio-button ng-click="powerWifePrimaryAgent('yes')" value="yes">Yes</md-radio-button>
+					<md-radio-button ng-click="powerWifePrimaryAgent('no')" value="no">No</md-radio-button>
+				</md-radio-group>
+			</div>
+			<div class="power-couple-husbandPrimaryAgent" ng-show="power.wifePrimaryAgentShow">
+				<h2 class="primary-agent">Primary Agent: {{basic.wife.fullName}}</h2>
+				<div class="data-wrapper">
+					<h4 class="top">1st Alternate Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.wifePrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.wifePrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<div class="power-couple-altPrimaryAgent" ng-show="power.altWifePrimaryAgentShow">
+				<div class="data-wrapper">
+					<h4 class="top">1st Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.altWifePrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="power.couple.altWifePrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<br>
+			<md-checkbox ng-model="power.couple.husband.coAgents" ng-true-value="true" ng-false-value="false">
+				Agents should act together as Co-Agents.
+				<br>
+				<span class="optional">This means that they would be required to work together to make decisions.</span>
+			</md-checkbox>
+		</div>
+	</div>
+	<div class="power-individual" ng-show="basic.individualShow">
+		<div class="data-wrapper">
+			<h4 class="top">1st Alternate Agent</h4>
+			<div class="input-wrapper">
+				<input ng-model="power.individual.firstChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+			<div class="input-wrapper">
+				<input ng-model="power.individual.secondChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<br>
+		<md-checkbox ng-model="power.individual.coAgents" ng-true-value="true" ng-false-value="false">
+			Agents should act together as Co-Agents.
+			<br>
+			<span class="optional">This means that they would be required to work together to make decisions.</span>
+		</md-checkbox>
+	</div>
+	<divider></divider>
+</div>

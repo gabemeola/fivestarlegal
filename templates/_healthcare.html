@@ -1,1 +1,130 @@
-HEALTHCARE WORKING
+<div class="heathcare">
+	<h1>Health Care Directive / Medical Power of Attorney</h1>
+	<br>
+	<h5>This is who will make medical decisions for you if you are incapacitated, but still alive.</h5>
+	<divider></divider>
+	<div class="healthcare-couple" ng-show="basic.coupleShow">
+		<div class="healthcare-couple-husband">
+			<h2>Husband's Durable Power Of Attorney</h2>
+			<div class="radio-wrapper">
+				<h4 class="right">Will your spouse be your primary agent?</h4>
+				<md-radio-group ng-model="healthcare.choice.husbandPrimaryAgent">
+					<md-radio-button ng-click="healthcareHusbandPrimaryAgent('yes')" value="yes">Yes</md-radio-button>
+					<md-radio-button ng-click="healthcareHusbandPrimaryAgent('no')" value="no">No</md-radio-button>
+				</md-radio-group>
+			</div>
+			<div class="healthcare-couple-husbandPrimaryAgent" ng-show="healthcare.husbandPrimaryAgentShow">
+				<h2 class="primary-agent">Primary Agent: {{basic.husband.fullName}}</h2>
+				<div class="data-wrapper">
+					<h4 class="top">1st Alternate Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.husbandPrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.husbandPrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<div class="healthcare-couple-altPrimaryAgent" ng-show="healthcare.altHusbandPrimaryAgentShow">
+				<div class="data-wrapper">
+					<h4 class="top">1st Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.altHusbandPrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.altHusbandPrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<br>
+			<md-checkbox ng-model="healthcare.couple.husband.coAgents" ng-true-value="true" ng-false-value="false">
+				Agents should act together as Co-Agents.
+				<br>
+				<span class="optional">This means that they would be required to work together to make decisions.</span>
+			</md-checkbox>
+		</div>
+		<divider></divider>
+		<div class="healthcare-couple-wife">
+			<h2>Wife's Durable Power Of Attorney</h2>
+			<div class="radio-wrapper">
+				<h4 class="right">Will your spouse be your primary agent?</h4>
+				<md-radio-group ng-model="healthcare.choice.wifePrimaryAgent">
+					<md-radio-button ng-click="healthcareWifePrimaryAgent('yes')" value="yes">Yes</md-radio-button>
+					<md-radio-button ng-click="healthcareWifePrimaryAgent('no')" value="no">No</md-radio-button>
+				</md-radio-group>
+			</div>
+			<div class="healthcare-couple-husbandPrimaryAgent" ng-show="healthcare.wifePrimaryAgentShow">
+				<h2 class="primary-agent">Primary Agent: {{basic.wife.fullName}}</h2>
+				<div class="data-wrapper">
+					<h4 class="top">1st Alternate Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.wifePrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.wifePrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<div class="healthcare-couple-altPrimaryAgent" ng-show="healthcare.altWifePrimaryAgentShow">
+				<div class="data-wrapper">
+					<h4 class="top">1st Agent</h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.altWifePrimaryAgent.firstChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">2nd Agent <span class="optional">(optional)</span></h4>
+					<div class="input-wrapper">
+						<input ng-model="healthcare.couple.altWifePrimaryAgent.secondChoice">
+						<label>Jane R. Doe</label>
+					</div>
+				</div>
+			</div>
+			<br>
+			<md-checkbox ng-model="special.couple.husband.coAgents" ng-true-value="true" ng-false-value="false">
+				Agents should act together as Co-Agents.
+				<br>
+				<span class="optional">This means that they would be required to work together to make decisions.</span>
+			</md-checkbox>
+		</div>
+	</div>
+	<div class="healthcare-individual" ng-show="basic.individualShow">
+		<div class="data-wrapper">
+			<h4 class="top">1st Alternate Agent</h4>
+			<div class="input-wrapper">
+				<input ng-model="healthcare.individual.firstChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+			<div class="input-wrapper">
+				<input ng-model="healthcare.individual.secondChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<br>
+		<md-checkbox ng-model="healthcare.individual.coAgents" ng-true-value="true" ng-false-value="false">
+			Agents should act together as Co-Agents.
+			<br>
+			<span class="optional">This means that they would be required to work together to make decisions.</span>
+		</md-checkbox>
+	</div>
+	<divider></divider>
+</div>

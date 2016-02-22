@@ -5,11 +5,17 @@
 	<md-radio-group ng-model="beneficiaries.choice.split">
 		<md-radio-button ng-click="splitChoice('equally')" value="equally">We would like to divide our assets equally between all of our children</md-radio-button>
 		<br>
-		<md-radio-button ng-click="splitChoice('percentage')" value="percentage">We would like to divide our assets between our children and/or another person(s) and/or organization(s) based on percentages
+		<md-radio-button ng-click="splitChoice('percentage')" value="percentage">We would like to divide our assets between our children <i>and/or</i> another person(s) and/or organization(s) based on <i>percentages</i>
 		</md-radio-button>
 	</md-radio-group>
 	<div class="beneficiaries-percentageChoice" ng-show="beneficiaries.percentageShow">
-		working
+		<div class="child-percentage" ng-repeat="child in concatChildren">
+			<p>{{child.name}}</p>
+			<div class="child-percentage-inside">
+				<input type="number">
+				<div class="child-percentage-inside-icon">%</div>
+			</div>
+		</div>
 	</div>
 	<divider></divider>
 	<h2>Ages for beneficiaries to receive their inheritance</h2>
@@ -29,3 +35,6 @@
 	</md-radio-group>
 	<divider></divider>
 </div>
+<md-select ng-model="childselect">
+	<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
+</md-select>
