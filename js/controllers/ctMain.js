@@ -202,8 +202,8 @@ angular.module("fivestarApp")
 		};
 		//End of Beneficiaries Template
 
-		//Special Template
-		$scope.special = {
+		//Power Template
+		$scope.power = {
 			choice: {
 				husbandPrimaryAgent: "yes",
 				wifePrimaryAgent: "yes"
@@ -225,24 +225,26 @@ angular.module("fivestarApp")
 			altWifePrimaryAgentShow: false
 		};
 		$scope.husbandPrimaryAgent = function (init) {
-			$scope.special.choice.husbandPrimaryAgent = init;
+			$scope.power.choice.husbandPrimaryAgent = init;
 			if(init == "yes") {
-				$scope.special.husbandPrimaryAgentShow = true;
-				$scope.special.altHusbandPrimaryAgentShow = false;
+				$scope.power.husbandPrimaryAgentShow = true;
+				$scope.power.altHusbandPrimaryAgentShow = false;
 			} else {
-				$scope.special.husbandPrimaryAgentShow = false;
-				$scope.special.altHusbandPrimaryAgentShow = true;
+				$scope.power.husbandPrimaryAgentShow = false;
+				$scope.power.altHusbandPrimaryAgentShow = true;
 			}
 		};
 		$scope.wifePrimaryAgent = function (init) {
-			$scope.special.choice.wifePrimaryAgent = init;
+			$scope.power.choice.wifePrimaryAgent = init;
 			if(init == "yes") {
-				$scope.special.wifePrimaryAgentShow = true;
-				$scope.special.altWifePrimaryAgentShow = false;
+				$scope.power.wifePrimaryAgentShow = true;
+				$scope.power.altWifePrimaryAgentShow = false;
 			} else {
-				$scope.special.wifePrimaryAgentShow = false;
-				$scope.special.altWifePrimaryAgentShow = true;
+				$scope.power.wifePrimaryAgentShow = false;
+				$scope.power.altWifePrimaryAgentShow = true;
 			}
 		};
-		//End of Special Template
+		//End of Power Template
+
+		//H
 	}]);
