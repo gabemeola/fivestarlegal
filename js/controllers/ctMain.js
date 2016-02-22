@@ -32,9 +32,10 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: "individual",
+			choice: null,
 			individualShow: true,
 			coupleShow: false,
+			dataShow: false,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -72,6 +73,7 @@ angular.module("fivestarApp")
 		};
 		$scope.basicChoice = function(init) {
 			$scope.basic.choice = init;
+			$scope.basic.dataShow = true;
 			if(init == "individual") {
 				$scope.basic.coupleShow = false;
 				$scope.basic.individualShow = true;
