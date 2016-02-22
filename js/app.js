@@ -1,5 +1,5 @@
 angular.module("fivestarApp", ["firebase", "ui.router", "ngAnimate", "ngMaterial"])
-	.config(["$urlRouterProvider", "$stateProvider", function ($urlRouterProvider, $stateProvider) {
+	.config(["$urlRouterProvider", "$stateProvider", "$mdThemingProvider", function ($urlRouterProvider, $stateProvider, $mdThemingProvider) {
 		$urlRouterProvider.otherwise("/");
 		$stateProvider
 			.state('basic', {
