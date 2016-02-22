@@ -33,7 +33,7 @@ angular.module("fivestarApp")
 		//Basic Template
 		$scope.basic = {
 			choice: null,
-			individualShow: true,
+			individualShow: false,
 			coupleShow: false,
 			dataShow: false,
 			nameOfTrust: null,
@@ -201,4 +201,10 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Beneficiaries Template
+
+		//Special Template
+		$scope.special = {
+
+		};
+		//End of Special Template
 	}]);

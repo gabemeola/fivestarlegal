@@ -1,1 +1,31 @@
-POWER WORKING
+<div class="power">
+	<h1>Durable Power of Attorney</h1>
+	<h5>This is who will manage your finances and make legal decisions for you if you are incapacitated, but still alive.</h5>
+	<divider></divider>
+	<div class="power-couple">
+
+	</div>
+	<div class="power-individual" ng-show="basic.individualShow">
+		<div class="data-wrapper">
+			<h4 class="top">1st Alternate Agent</h4>
+			<div class="input-wrapper">
+				<input ng-model="special.individual.firstChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="top">2nd Alternate Agent <span class="optional">(optional)</span></h4>
+			<div class="input-wrapper">
+				<input ng-model="special.individual.secondChoice">
+				<label>Jane R. Doe</label>
+			</div>
+		</div>
+		<br>
+		<md-checkbox ng-model="trustees.coGuardians" ng-true-value="true" ng-false-value="false">
+			Alternate Agents should act together as Co-Agents.
+			<br>
+			<span class="optional">This means that they would be required to work together to make decisions.</span>
+		</md-checkbox>
+	</div>
+	<divider></divider>
+</div>
