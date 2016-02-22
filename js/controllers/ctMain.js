@@ -124,11 +124,6 @@ angular.module("fivestarApp")
 		};
 		$scope.futureChildrenChoice = function(init) {
 			$scope.children.choice.futureChildren = init;
-			if(init == "yes") {
-				$scope.children.futureChildrenShow = true;
-			} else {
-				$scope.children.futureChildrenShow = false;
-			}
 		};
 		$scope.husbandChildrenChoice = function(init) {
 			$scope.children.choice.husbandChildren = init;
