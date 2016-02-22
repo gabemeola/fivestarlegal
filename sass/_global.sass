@@ -9,6 +9,31 @@ button:focus, input:focus, textarea:focus
 *
 	font-family: $fontStyle
 	color: rgb(44, 62, 80)
+	&.ng-hide-add, &.ng-hide-remove
+		//transition: $transition
+		&.ng-hide-remove
+		&.ng-hide-add
+ui-view
+	&.ng-enter, &.ng-leave
+		position: absolute
+		left: 0
+		right: 0
+		-webkit-transition: $transition
+		-moz-transition: $transition
+		-o-transition: $transition
+		transition: $transition
+	&.ng-enter
+		opacity: 0
+		//-webkit-animation: viewopen 1100ms linear both
+		//animation: viewopen 1100ms linear both
+	&.ng-enter-active
+		opacity: 1
+	&.ng-leave
+		opacity: 1
+		//-webkit-animation: viewopen 1100ms linear both
+		//animation: viewopen 1100ms linear both
+	&.ng-leave-active
+		opacity: 0
 .divider
 	background-color: rgb(238, 238, 238)
 	height: 1px
