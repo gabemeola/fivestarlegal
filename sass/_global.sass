@@ -53,6 +53,7 @@ h2
 	font-weight: 500
 	margin-bottom: 10.5px
 	padding-bottom: 12px
+	position: relative
 h4.right
 	color: rgb(44, 62, 80)
 	font-size: 15px
@@ -70,11 +71,21 @@ h4.top
 	position: relative
 .data-wrapper
 	position: relative
+	width: 550px
+	display: block
+	padding-left: 5%
+	@media only screen and (max-width: $medDevice)
+		width: 95%
+		padding-left: 1%
+	h4.right
+		width: 20%
 	.input-wrapper
 		position: relative
-		width: 500px
+		width: 70%
 		display: inline-block
 		height: 70px
+		@media only screen and (max-width: $medDevice)
+			width: 75%
 input
 	padding: 8px 10px
 	border: 2px solid rgb(220, 228, 236)
