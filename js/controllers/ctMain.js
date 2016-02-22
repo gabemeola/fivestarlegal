@@ -204,7 +204,32 @@ angular.module("fivestarApp")
 
 		//Special Template
 		$scope.special = {
-
+			choice: {
+				husbandPrimaryAgent: "yes"
+			},
+			individual: {
+				coAgents: false
+			},
+			couple: {
+				husband: {
+					coAgents: false
+				},
+				wife: {
+					coAgents: false
+				}
+			},
+			husbandPrimaryAgentShow: true,
+			altHusbandPrimaryAgentShow: false
+		};
+		$scope.husbandPrimaryAgent = function (init) {
+			$scope.special.choice.husbandPrimaryAgent = init;
+			if(init == "yes") {
+				$scope.special.husbandPrimaryAgentShow = true;
+				$scope.special.altHusbandPrimaryAgentShow = false;
+			} else {
+				$scope.special.husbandPrimaryAgentShow = false;
+				$scope.special.altHusbandPrimaryAgentShow = true;
+			}
 		};
 		//End of Special Template
 	}]);
