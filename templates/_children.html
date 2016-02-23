@@ -18,8 +18,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="addnew-data">
-			<div ng-click="addnewChild('current')">+ add another child</div>
+		<div ng-click="addnewChild('current')" class="addnew-data">
+			<div>+ add another child</div>
 		</div>
 	</div>
 	<divider></divider>
@@ -49,8 +49,8 @@
 				</div>
 			</div>
 			</div>
-			<div class="addnew-data">
-				<div ng-click="addnewChild('husband')">+ add another child</div>
+			<div ng-click="addnewChild('current')" class="addnew-data">
+				<div>+ add another child</div>
 			</div>
 		</div>
 		<divider></divider>
@@ -79,4 +79,10 @@
 		</div>
 	</div>
 	<divider></divider>
+	<div class="navigator">
+		<ul>
+			<li class="navigator-back-btn" ui-sref="basic">← Back</li>
+			<li class="navigator-forward-btn" ui-sref="trustees" ng-click="childGrabber()">Next →</li>
+		</ul>
+	</div>
 </div>
