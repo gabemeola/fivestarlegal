@@ -34,6 +34,12 @@
 		</md-radio-button>
 	</md-radio-group>
 	<divider></divider>
+	<div class="navigator">
+		<ul>
+			<li class="navigator-back-btn" ui-sref="trustees">← Back</li>
+			<li class="navigator-forward-btn" ui-sref="special">Next →</li>
+		</ul>
+	</div>
 </div>
 <md-select ng-model="childselect">
 	<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
