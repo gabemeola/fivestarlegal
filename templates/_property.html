@@ -1,4 +1,127 @@
-PROPERTY WORKING
+<div class="property">
+	<h1>Transferring Property in to your Trust</h1>
+	<h5>It is necessary to prepare a deed to transfer the title (ownership) of your real property to the Trust. <br>
+		<i>Please note there is a $200 fee per deed/property.</i>
+	</h5>
+	<divider></divider>
+	<h2>Would you like us to prepare the deed for your primary residence?</h2>
+	<md-radio-group ng-model="property.choice.prepareDeed">
+		<md-radio-button ng-click="prepareDeedChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="prepareDeedChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="property-prepareDeed-true" ng-show="property.prepareDeedShow">
+		<div class="data-wrapper">
+			<h4 class="top">Year property was purchased</h4>
+			<div class="input-wrapper">
+				<input type="number">
+				<label>1969</label>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<h2>Do you own any other real estate?</h2>
+	<md-radio-group ng-model="property.choice.otherRealEstate">
+		<md-radio-button ng-click="otherRealEstateChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="otherRealEstateChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="property-otherRealEstate-true" ng-show="property.otherRealEstateShow">
+		<div class="data-wrapper">
+			<h4 class="right">Address</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.homeAddress.address">
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">City</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.homeAddress.city">
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">County</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.homeAddress.county">
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">State</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.homeAddress.state">
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="right">Zip</h4>
+			<div class="input-wrapper">
+				<input ng-model="basic.homeAddress.zip">
+			</div>
+		</div>
+		<div class="data-wrapper">
+			<h4 class="top">Year property was purchased</h4>
+			<div class="input-wrapper">
+				<input type="number">
+				<label>1969</label>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<h2>Do you have ownership in a small business (LLC or SCORP)?</h2>
+	<md-radio-group ng-model="property.choice.business">
+		<md-radio-button ng-click="propertyBusinessChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="propertyBusinessChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="property-business-true" ng-show="property.businessShow">
+		<h5>We will prepare an assignment to transfer your business interest in to the Trust.</h5>
+		<div class="property-business-wrapper">
+			<div class="data-wrapper">
+				<h4 class="top">Name of entity</h4>
+				<div class="input-wrapper">
+					<input ng-model="temp"/>
+					<label>Acme, LLC</label>
+				</div>
+			</div>
+			<div class="entity-type">
+				<md-radio-group ng-model="new">
+					<h4 class="top">Entity type</h4>
+					<md-radio-button value="llc">LLC</md-radio-button>
+					<md-radio-button value="scorp">SCORP</md-radio-button>
+				</md-radio-group>
+			</div>
+		</div>
+		<div class="property-business-wrapper">
+			<div class="data-wrapper">
+				<h4 class="top">Name of entity</h4>
+				<div class="input-wrapper">
+					<input ng-model="temp"/>
+					<label>Acme, LLC</label>
+				</div>
+			</div>
+			<div class="entity-type">
+				<md-radio-group ng-model="new">
+					<h4 class="top">Entity type</h4>
+					<md-radio-button value="llc">LLC</md-radio-button>
+					<md-radio-button value="scorp">SCORP</md-radio-button>
+				</md-radio-group>
+			</div>
+		</div>
+		<div class="property-business-wrapper">
+			<div class="data-wrapper">
+				<h4 class="top">Name of entity</h4>
+				<div class="input-wrapper">
+					<input ng-model="temp"/>
+					<label>Acme, LLC</label>
+				</div>
+			</div>
+			<div class="entity-type">
+				<md-radio-group ng-model="new">
+					<h4 class="top">Entity type</h4>
+					<md-radio-button value="llc">LLC</md-radio-button>
+					<md-radio-button value="scorp">SCORP</md-radio-button>
+				</md-radio-group>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+</div>
 <div class="navigator">
 	<ul>
 		<li class="navigator-back-btn" ui-sref="healthcare">← Back</li>

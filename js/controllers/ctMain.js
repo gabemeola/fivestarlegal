@@ -347,4 +347,38 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Healthcare Template
+
+		//Property Template
+		$scope.property = {
+			choice: {
+				prepareDeed: "no",
+				otherRealEstate: "no",
+				business: "no"
+			},
+			prepareDeedShow: false,
+			otherRealEstateShow: false,
+			businessShow: false
+		};
+		$scope.prepareDeedChoice = function(init) {
+			if(init == "yes") {
+				$scope.property.prepareDeedShow = true;
+			} else {
+				$scope.property.prepareDeedShow = false;
+			}
+		};
+		$scope.otherRealEstateChoice = function(init) {
+			if(init == "yes") {
+				$scope.property.otherRealEstateShow = true;
+			} else {
+				$scope.property.otherRealEstateShow = false;
+			}
+		};
+		$scope.propertyBusinessChoice = function(init) {
+			if(init == "yes") {
+				$scope.property.businessShow = true;
+			} else {
+				$scope.property.businessShow = false;
+			}
+		};
+		//End of Property Template
 	}]);
