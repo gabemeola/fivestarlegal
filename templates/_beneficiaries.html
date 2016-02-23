@@ -23,22 +23,22 @@
 	<br>
 	<div class="choice-wrapper">
 		<md-radio-group ng-model="beneficiaries.choice.age" class="choice-wrapper-radios">
-			<md-radio-button ng-click="ageChoice('none')" value="none">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
+			<md-radio-button ng-click="beneficiariesAgeChoice('none')" value="none">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
 			<br>
-			<md-radio-button ng-click="ageChoice('one')" value="one">Distribution at one age
+			<md-radio-button ng-click="beneficiariesAgeChoice('one')" value="one">Distribution at one age
 			</md-radio-button>
 			<div class="choice-wrapper-inputs" ng-show="beneficiaries.oneShow">
 				<input class="age-choice-one" placeholder="25" type="number">
 			</div>
 			<br>
-			<md-radio-button ng-click="ageChoice('two')" value="two">Distribution at two ages
+			<md-radio-button ng-click="beneficiariesAgeChoice('two')" value="two">Distribution at two ages
 			</md-radio-button>
 			<div class="choice-wrapper-inputs" ng-show="beneficiaries.twoShow">
 				<h4 class="top">receive 50% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
 				<h4 class="top">remaining balance at age:</h4><input class="" placeholder="30" type="number">
 			</div>
 			<br>
-			<md-radio-button ng-click="ageChoice('three')" value="three">Distribution at three ages
+			<md-radio-button ng-click="beneficiariesAgeChoice('three')" value="three">Distribution at three ages
 			</md-radio-button>
 			<div class="choice-wrapper-inputs" ng-show="beneficiaries.threeShow">
 				<h4 class="top">receive 33% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
@@ -56,6 +56,3 @@
 		</ul>
 	</div>
 </div>
-<md-select ng-model="childselect">
-	<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
-</md-select>

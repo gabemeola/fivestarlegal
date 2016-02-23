@@ -1,10 +1,67 @@
 <div class="special">
 	<h2>Deceased beneficiaries' inheritance</h2>
 	<h5>If one of the beneficiaries passes away before you, would you want their portion of the Trust Estate to pass on to their children (typically your grandchildren)?</h5>
-	<md-radio-group>
-		<md-radio-button>Yes</md-radio-button>
-		<md-radio-button>No</md-radio-button>
+	<md-radio-group ng-model="special.choice.inheritance">
+		<md-radio-button ng-click="inheritanceChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="inheritanceChoice('no')" value="no">No</md-radio-button>
 	</md-radio-group>
+	<div class="special-inheritance-true" ng-show="special.inheritanceShow">
+		<h4 class="top">What age should they receive it?</h4>
+		<div class="choice-wrapper">
+			<md-radio-group ng-model="special.choice.age" class="choice-wrapper-radios">
+				<md-radio-button ng-click="specialAgeChoice('none')" value="none">Just give it to them as soon as we are gone, no matter how old they are.</md-radio-button>
+				<br>
+				<md-radio-button ng-click="specialAgeChoice('one')" value="one">Distribution at one age
+				</md-radio-button>
+				<div class="choice-wrapper-inputs" ng-show="special.oneShow">
+					<input class="age-choice-one" placeholder="25" type="number">
+				</div>
+				<br>
+				<md-radio-button ng-click="specialAgeChoice('two')" value="two">Distribution at two ages
+				</md-radio-button>
+				<div class="choice-wrapper-inputs" ng-show="special.twoShow">
+					<h4 class="top">receive 50% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
+					<h4 class="top">remaining balance at age:</h4><input class="" placeholder="30" type="number">
+				</div>
+				<br>
+				<md-radio-button ng-click="specialAgeChoice('three')" value="three">Distribution at three ages
+				</md-radio-button>
+				<div class="choice-wrapper-inputs" ng-show="special.threeShow">
+					<h4 class="top">receive 33% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
+					<h4 class="top">receive 33% at age:</h4><input class="" placeholder="30" type="number">
+					<h4 class="top">remaining balance at age:</h4><input class="" placeholder="35" type="number">
+				</div>
+				<br>
+			</md-radio-group>
+		</div>
+	</div>
+	<div class="special-iheritance-false" ng-hide="special.inheritanceShow">
+		<h5>The portion that would have been given to the deceased beneficiary's children will return to the Trust Estate and be divided between the remaining beneficiaries.</h5>
+	</div>
+	<divider></divider>
+	<h2>Do any of your beneficiaries have special needs?</h2>
+	<md-radio-group ng-model="special.choice.special" ng-click="childGrabber()">
+		<md-radio-button ng-click="specialNeedsChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="specialNeedsChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="special-specialneeds" ng-show="special.specialNeedsShow">
+		<h5>We will prepare a Special Needs Trust that will hold their share of the Trust Estate so that their state or government assistance is not affected.</h5>
+		<md-select ng-model="childselect">
+			<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
+		</md-select>
+	</div>
+	<divider></divider>
+	<h2>Are there any children that you have intentionally <i>excluded?</i></h2>
+	<md-radio-group ng-model="special.choice.exclude" ng-click="childGrabber()">
+		<md-radio-button ng-click="specialExcludeChoice('yes')" value="yes">Yes</md-radio-button>
+		<md-radio-button ng-click="specialExcludeChoice('no')" value="no">No</md-radio-button>
+	</md-radio-group>
+	<div class="special-exclude" ng-show="special.excludeShow">
+		<md-select ng-model="childselect">
+			<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
+		</md-select>
+	</div>
+	<divider></divider>
 	<div class="navigator">
 		<ul>
 			<li class="navigator-back-btn" ui-sref="beneficiaries">← Back</li>

@@ -181,7 +181,7 @@ angular.module("fivestarApp")
 				$scope.childGrabber();
 			}
 		};
-		$scope.ageChoice = function(init) {
+		$scope.beneficiariesAgeChoice = function(init) {
 			if(init == "one") {
 				$scope.beneficiaries.threeShow = false;
 				$scope.beneficiaries.twoShow = false;
@@ -201,6 +201,64 @@ angular.module("fivestarApp")
 			}
 		};
 		//End of Beneficiaries Template
+
+		//Special Template
+		$scope.special = {
+			choice: {
+				inheritance: "yes",
+				age: "none",
+				special: "no",
+				exclude: "no"
+			},
+			inheritanceShow: true,
+			percentageShow: false,
+			oneShow: false,
+			twoShow: false,
+			threeShow: false,
+			specialNeedsShow: false,
+			excludeShow: false
+		};
+		$scope.specialAgeChoice = function(init) {
+			if(init == "one") {
+				$scope.special.threeShow = false;
+				$scope.special.twoShow = false;
+				$scope.special.oneShow = true;
+			} else if(init == "two") {
+				$scope.special.oneShow = false;
+				$scope.special.threeShow = false;
+				$scope.special.twoShow = true;
+			} else if(init == "three") {
+				$scope.special.oneShow = false;
+				$scope.special.twoShow = false;
+				$scope.special.threeShow = true;
+			} else {
+				$scope.special.oneShow = false;
+				$scope.special.twoShow = false;
+				$scope.special.threeShow = false;
+			}
+		};
+		$scope.specialNeedsChoice = function(init) {
+			if(init == "yes") {
+				$scope.special.specialNeedsShow = true;
+			} else {
+				$scope.special.specialNeedsShow = false;
+			}
+		};
+		$scope.specialExcludeChoice = function(init) {
+			if(init == "yes") {
+				$scope.special.excludeShow = true;
+			} else {
+				$scope.special.excludeShow = false;
+			}
+		};
+		$scope.inheritanceChoice = function(init) {
+			if(init == "yes") {
+				$scope.special.inheritanceShow = true;
+			} else {
+				$scope.special.inheritanceShow = false;
+			}
+		};
+		//End of Special Template
 
 		//Power Template
 		$scope.power = {
