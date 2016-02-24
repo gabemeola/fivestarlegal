@@ -1,5 +1,5 @@
 <div class="review">
-	<div class="review-individual">
+	<div class="review-individual" ng-show="basic.individualShow">
 		<div class="review-individual-info">
 			<h2>Your Info</h2>
 			<p>{{basic.your.fullName}}</p>
@@ -57,7 +57,7 @@
 		<h2>Successor Trustee(s)</h2>
 		<p>{{trustees.successor.firstChoice}}</p>
 		<p>{{trustees.successor.secondChoice}}</p>
-		<p class="small" ng-show="trustees.coTrustees"">acting as co-guardians</p>
+		<p class="small" ng-show="trustees.coTrustees">acting as co-guardians</p>
 	</div>
 	<divider></divider>
 	<div class="review-beneficiaries">
@@ -73,6 +73,50 @@
 		<h2>Excluded Children</h2>
 		<div class="review-excluded" ng-repeat="child in special.excludeChips">
 			<p class="excluded">{{child}}</p>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-power">
+		<h2>Durable Power of Attorney</h2>
+		<div class="review-power-individual" ng-show="basic.individualShow">
+			<p><b>Primary Agents:</b></p>
+			<p>{{power.individual.firstChoice}}</p>
+			<p>{{power.individual.secondChoice}}</p>
+			<p class="small" ng-show="power.individual.coAgents">acting as co-agents</p>
+		</div>
+		<div class="review-power-couple" ng-show="basic.coupleShow">
+			<div class="review-split-wrapper">
+				<div class="review-split">
+					<h2>Husband</h2>
+					<div class="review-husband-primary" ng-show="power.husbandPrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{power.couple.husbandPrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.husbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-husband-alt" ng-show="power.altHusbandPrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{power.couple.altHusbandPrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.altHusbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="power.couple.husband.coAgents">acting as co-agents</p>
+				</div>
+				<div class="review-split">
+					<h2>Wife</h2>
+					<div class="review-wife-primary" ng-show="power.wifePrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{power.couple.wifePrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.wifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-wife-alt" ng-show="power.altWifePrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{power.couple.altWifePrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.altWifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="power.couple.wife.coAgents">acting as co-agents</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="navigator">
