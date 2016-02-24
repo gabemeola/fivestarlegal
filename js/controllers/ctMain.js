@@ -33,10 +33,10 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: "individual",
-			individualShow: true,
+			choice: null,
+			individualShow: false,
 			coupleShow: false,
-			dataShow: true,
+			dataShow: false,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -95,8 +95,8 @@ angular.module("fivestarApp")
 			},
 			currentChildren: {
 				1: {
-					name: "gabe",
-					dob: "04/26/1997"
+					name: null,
+					dob: null
 				}
 			},
 			husbandChildren: {
