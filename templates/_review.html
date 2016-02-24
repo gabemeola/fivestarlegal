@@ -55,8 +55,11 @@
 	<divider></divider>
 	<div class="review-successor">
 		<h2>Successor Trustee(s)</h2>
-
+		<p>{{trustees.successor.firstChoice}}</p>
+		<p>{{trustees.successor.secondChoice}}</p>
+		<p class="small" ng-show="trustees.coTrustees"">acting as co-guardians</p>
 	</div>
+
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
