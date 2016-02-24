@@ -16,6 +16,25 @@
 				<div class="child-percentage-inside-icon">%</div>
 			</div>
 		</div>
+		<div class="beneficiaries-new">
+			<div class="beneficiaries-repeater" ng-repeat="beneficiary in beneficiaries.beneficiaries">
+				<div class="data-wrapper">
+					<h4 class="top">Name of Person or Organization</h4>
+					<div class="input-wrapper">
+						<input ng-model="beneficiary.name">
+					</div>
+				</div>
+				<div class="beneficiaries-new-inside">
+					<h4 class="top">Percentage</h4>
+					<input type="number" ng-model="beneficiary.percentage">
+					<div class="beneficiaries-new-inside-icon">%</div>
+				</div>
+			</div>
+			</div>
+			<div ng-click="addnewBeneficiaries()" class="addnew-data" id="new-beneficaries">
+				<div>+ add another beneficiary</div>
+			</div>
+		</div>
 	</div>
 	<divider></divider>
 	<h2>Ages for beneficiaries to receive their inheritance</h2>

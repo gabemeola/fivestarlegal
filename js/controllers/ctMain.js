@@ -32,9 +32,9 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: null,
+			choice: "couple",
 			individualShow: false,
-			coupleShow: false,
+			coupleShow: true,
 			dataShow: false,
 			nameOfTrust: null,
 			your: {
@@ -171,6 +171,10 @@ angular.module("fivestarApp")
 			childrenPercentage: {
 
 			},
+			beneficiaries: {
+
+			},
+			beneficiariesAmount: 0,
 			percentageShow: false,
 			oneShow: false,
 			twoShow: false,
@@ -203,6 +207,16 @@ angular.module("fivestarApp")
 				$scope.beneficiaries.twoShow = false;
 				$scope.beneficiaries.threeShow = false;
 			}
+		};
+		$scope.addnewBeneficiaries = function(init) {
+			$scope.beneficiaries.beneficiariesAmount++;
+			console.warn($scope.beneficiaries.beneficiariesAmount);
+			var beneficiariesAmount = $scope.beneficiaries.beneficiariesAmount;
+			$scope.beneficiaries.beneficiaries[beneficiariesAmount] = {
+				name: null,
+				percentage: null
+			};
+			console.warn($scope.beneficiaries);
 		};
 		//End of Beneficiaries Template
 
