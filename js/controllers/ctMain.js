@@ -451,45 +451,7 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
-			$scope.openLeftMenu('close');
 
-			var diffMailingAddress = function(init) {
-				if(!init) {
-					$scope.review.mailingAddress = {
-						sameAs: false,
-						address: $scope.basic.mailingAddress.address,
-						city: $scope.basic.mailingAddress.city,
-						country: $scope.basic.mailingAddress.county,
-						state: $scope.basic.mailingAddress.state,
-						zip: $scope.basic.mailingAddress.zip
-					};
-				}  else {
-					$scope.review.mailingAddress.sameAs = true;
-				};
-			};
-
-			$scope.review = {
-				individual: {
-					info: {
-						nameOfTrust: $scope.basic.nameOfTrust,
-						fullName: $scope.basic.your.fullName,
-						dob: $scope.basic.your.dob,
-						tel: $scope.basic.your.phone,
-						email: $scope.basic.your.email
-					},
-
-				},
-				couple: {
-
-				},
-				address: {
-					address: $scope.basic.homeAddress.address,
-					city: $scope.basic.homeAddress.city,
-					country: $scope.basic.homeAddress.county,
-					state: $scope.basic.homeAddress.state,
-					zip: $scope.basic.homeAddress.zip
-				},
-			};
 		};
 		//End of Review Template
 	}]);
