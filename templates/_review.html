@@ -119,6 +119,50 @@
 			</div>
 		</div>
 	</div>
+	<divider></divider>
+	<div class="review-healthcare">
+		<h2>Durable Power of Attorney</h2>
+		<div class="review-power-individual" ng-show="basic.individualShow">
+			<p><b>Primary Agents:</b></p>
+			<p>{{healthcare.individual.firstChoice}}</p>
+			<p>{{healthcare.individual.secondChoice}}</p>
+			<p class="small" ng-show="healthcare.individual.coAgents">acting as co-agents</p>
+		</div>
+		<div class="review-healthcare-couple" ng-show="basic.coupleShow">
+			<div class="review-split-wrapper">
+				<div class="review-split">
+					<h2>Husband</h2>
+					<div class="review-husband-primary" ng-show="healthcare.husbandPrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{healthcare.couple.husbandPrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.husbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-husband-alt" ng-show="healthcare.altHusbandPrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{healthcare.couple.altHusbandPrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.altHusbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="healthcare.couple.husband.coAgents">acting as co-agents</p>
+				</div>
+				<div class="review-split">
+					<h2>Wife</h2>
+					<div class="review-wife-primary" ng-show="healthcare.wifePrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{healthcare.couple.wifePrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.wifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-wife-alt" ng-show="healthcare.altWifePrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{healthcare.couple.altWifePrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.altWifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="healthcare.couple.wife.coAgents">acting as co-agents</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
