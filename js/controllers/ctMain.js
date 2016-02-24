@@ -168,6 +168,9 @@ angular.module("fivestarApp")
 				split: "equally",
 				age: "none"
 			},
+			childrenPercentage: {
+
+			},
 			percentageShow: false,
 			oneShow: false,
 			twoShow: false,
@@ -177,6 +180,7 @@ angular.module("fivestarApp")
 			if(init == "equally") {
 				$scope.beneficiaries.percentageShow = false;
 			} else {
+				console.warn($scope.beneficiaries.childrenPercentage);
 				$scope.beneficiaries.percentageShow = true;
 				$scope.childGrabber();
 			}
