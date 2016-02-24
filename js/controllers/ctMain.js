@@ -29,6 +29,8 @@ angular.module("fivestarApp")
 			concater(husbandChildren);
 			concater(wifeChildren);
 			$scope.concatChildren = splitedChilds;
+			console.log($scope.special.specialChips);
+			console.log($scope.special.excludedChips);
 		};
 		//Basic Template
 		$scope.basic = {
@@ -239,6 +241,24 @@ angular.module("fivestarApp")
 				special: "no",
 				exclude: "no"
 			},
+			ageChoiceOne: {
+				first: null
+			},
+			ageChoiceTwo: {
+				first: null,
+				second: null
+			},
+			ageChoiceThree: {
+				first: null,
+				second: null,
+				third: null
+			},
+			specialChips: [
+
+			],
+			excludeChips : [
+
+			],
 			inheritanceShow: true,
 			percentageShow: false,
 			oneShow: false,
