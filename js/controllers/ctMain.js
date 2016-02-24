@@ -174,6 +174,18 @@ angular.module("fivestarApp")
 			beneficiaries: {
 
 			},
+			ageChoiceOne: {
+				first: null
+			},
+			ageChoiceTwo: {
+				first: null,
+				second: null
+			},
+			ageChoiceThree: {
+				first: null,
+				second: null,
+				third: null
+			},
 			beneficiariesAmount: 0,
 			percentageShow: false,
 			oneShow: false,
@@ -184,7 +196,6 @@ angular.module("fivestarApp")
 			if(init == "equally") {
 				$scope.beneficiaries.percentageShow = false;
 			} else {
-				console.warn($scope.beneficiaries.childrenPercentage);
 				$scope.beneficiaries.percentageShow = true;
 				$scope.childGrabber();
 			}
