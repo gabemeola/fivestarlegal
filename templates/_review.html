@@ -47,8 +47,8 @@
 				<p class="small" ng-show="trustees.coGuardians">acting as co-guardians</p>
 			</div>
 		</div>
+		<h2>Special Needs</h2>
 		<div class="review-special" ng-repeat="child in special.specialChips">
-			<h2>Special Needs</h2>
 			<p class="special">{{child}}</p>
 		</div>
 	</div>
@@ -59,7 +59,22 @@
 		<p>{{trustees.successor.secondChoice}}</p>
 		<p class="small" ng-show="trustees.coTrustees"">acting as co-guardians</p>
 	</div>
-
+	<divider></divider>
+	<div class="review-beneficiaries">
+		<h2>Beneficiaries</h2>
+		<p>I would like to divide the assets as follows:</p>
+		<div class="review-beneficiaries-children" ng-repeat="child in concatChildren">
+			<p>{{child.name}}: {{child.percentage}}%</p>
+		</div>
+		<div class="review-beneficiaries-others" ng-repeat="beneficiary in beneficiaries.beneficiaries">
+			<p>{{beneficiary.name}}: {{beneficiary.percentage}}%</p>
+		</div>
+		<br>
+		<h2>Excluded Children</h2>
+		<div class="review-excluded" ng-repeat="child in special.excludeChips">
+			<p class="excluded">{{child}}</p>
+		</div>
+	</div>
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>

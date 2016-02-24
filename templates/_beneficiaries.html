@@ -12,7 +12,8 @@
 		<div class="child-percentage" ng-repeat="child in concatChildren">
 			<p>{{child.name}}</p>
 			<div class="child-percentage-inside">
-				<input type="number" ng-model="beneficiaries.childrenPercentage[child.name]">
+				<!--<input type="number" ng-model="beneficiaries.childrenPercentage[child.name]">-->
+				<input type="number" ng-model="child.percentage">
 				<div class="child-percentage-inside-icon">%</div>
 			</div>
 		</div>
