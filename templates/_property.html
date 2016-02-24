@@ -25,41 +25,48 @@
 		<md-radio-button ng-click="otherRealEstateChoice('no')" value="no">No</md-radio-button>
 	</md-radio-group>
 	<div class="property-otherRealEstate-true" ng-show="property.otherRealEstateShow">
-		<div class="data-wrapper">
-			<h4 class="right">Address</h4>
-			<div class="input-wrapper">
-				<input ng-model="basic.homeAddress.address">
+		<div class="property-otherRealEstate-new">
+			<div class="property-otherRealEstate-repeater" ng-repeat="estate in property.estate">
+				<div class="data-wrapper">
+					<h4 class="right">Address</h4>
+					<div class="input-wrapper">
+						<input ng-model="estate.address">
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="right">City</h4>
+					<div class="input-wrapper">
+						<input ng-model="estate.city">
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="right">County</h4>
+					<div class="input-wrapper">
+						<input ng-model="estate.county">
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="right">State</h4>
+					<div class="input-wrapper">
+						<input ng-model="estate.state">
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="right">Zip</h4>
+					<div class="input-wrapper">
+						<input ng-model="estate.zip">
+					</div>
+				</div>
+				<div class="data-wrapper">
+					<h4 class="top">Year property was purchased</h4>
+					<div class="input-wrapper">
+						<input type="number" ng-model="estate.purchaseDate">
+						<label>1969</label>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="data-wrapper">
-			<h4 class="right">City</h4>
-			<div class="input-wrapper">
-				<input ng-model="basic.homeAddress.city">
-			</div>
-		</div>
-		<div class="data-wrapper">
-			<h4 class="right">County</h4>
-			<div class="input-wrapper">
-				<input ng-model="basic.homeAddress.county">
-			</div>
-		</div>
-		<div class="data-wrapper">
-			<h4 class="right">State</h4>
-			<div class="input-wrapper">
-				<input ng-model="basic.homeAddress.state">
-			</div>
-		</div>
-		<div class="data-wrapper">
-			<h4 class="right">Zip</h4>
-			<div class="input-wrapper">
-				<input ng-model="basic.homeAddress.zip">
-			</div>
-		</div>
-		<div class="data-wrapper">
-			<h4 class="top">Year property was purchased</h4>
-			<div class="input-wrapper">
-				<input type="number">
-				<label>1969</label>
+			<div ng-click="addnewEstate()" class="addnew-data" id="new-property">
+				<div>+ add another property</div>
 			</div>
 		</div>
 	</div>

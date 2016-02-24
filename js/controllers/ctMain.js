@@ -404,6 +404,11 @@ angular.module("fivestarApp")
 				otherRealEstate: "no",
 				business: "no"
 			},
+			estate: {
+
+			},
+			estateAmount: 0,
+			businessAmount: 0,
 			prepareDeedShow: false,
 			otherRealEstateShow: false,
 			businessShow: false
@@ -428,6 +433,16 @@ angular.module("fivestarApp")
 			} else {
 				$scope.property.businessShow = false;
 			}
+		};
+		$scope.addnewEstate = function(init) {
+			$scope.property.estateAmount++;
+			console.warn($scope.property.estateAmount);
+			var estateAmount = $scope.property.estateAmount;
+			$scope.property.estate[estateAmount] = {
+				name: null,
+				percentage: null
+			};
+			console.warn($scope.property);
 		};
 		//End of Property Template
 	}]);
