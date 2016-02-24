@@ -10,26 +10,53 @@
 	</div>
 	<divider></divider>
 	<div class="review-address">
-		<div class="review-homeAddress">
-			<h2>Home Address</h2>
-			<p>{{basic.homeAddress.address}}</p>
-			<p>{{basic.homeAddress.city}}, {{basic.homeAddress.county}}</p>
-			<p>{{basic.homeAddress.state}}, {{basic.homeAddress.zip}}</p>
-			<p class="small" ng-show="property.prepareDeedShow">purchased in {{property.yearPurchased}}</p>
-		</div>
-		<div class="review-mailingAddress">
-			<h2>Mailing Address</h2>
-			<div ng-show="basic.mailingAddress.sameAs">
-				<p>(same as home)</p>
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Home Address</h2>
+				<p>{{basic.homeAddress.address}}</p>
+				<p>{{basic.homeAddress.city}}, {{basic.homeAddress.county}}</p>
+				<p>{{basic.homeAddress.state}}, {{basic.homeAddress.zip}}</p>
+				<p class="small" ng-show="property.prepareDeedShow">purchased in {{property.yearPurchased}}</p>
 			</div>
-			<div ng-hide="basic.mailingAddress.sameAs">
-				<p>{{basic.mailingAddress.address}}</p>
-				<p>{{basic.mailingAddress.city}}, {{basic.mailingAddress.county}}</p>
-				<p>{{basic.mailingAddress.state}}, {{basic.mailingAddress.zip}}</p>
+			<div class="review-split">
+				<h2>Mailing Address</h2>
+				<div ng-show="basic.mailingAddress.sameAs">
+					<p>(same as home)</p>
+				</div>
+				<div ng-hide="basic.mailingAddress.sameAs">
+					<p>{{basic.mailingAddress.address}}</p>
+					<p>{{basic.mailingAddress.city}}, {{basic.mailingAddress.county}}</p>
+					<p>{{basic.mailingAddress.state}}, {{basic.mailingAddress.zip}}</p>
+				</div>
 			</div>
 		</div>
 	</div>
 	<divider></divider>
+	<div class="review-children">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Children</h2>
+				<div class="review-children-repeater" ng-repeat="child in concatChildren">
+					<p>{{child.name}}, {{child.dob}}</p>
+				</div>
+			</div>
+			<div class="review-split">
+				<h2>Guardian(s)</h2>
+				<p>{{trustees.guardian.firstChoice}}</p>
+				<p>{{trustees.guardian.secondChoice}}</p>
+				<p class="small" ng-show="trustees.coGuardians">acting as co-guardians</p>
+			</div>
+		</div>
+		<div class="review-special" ng-repeat="child in special.specialChips">
+			<h2>Special Needs</h2>
+			<p class="special">{{child}}</p>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-successor">
+		<h2>Successor Trustee(s)</h2>
+
+	</div>
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
