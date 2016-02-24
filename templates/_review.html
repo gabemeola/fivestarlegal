@@ -163,6 +163,31 @@
 			</div>
 		</div>
 	</div>
+	<divider></divider>
+	<div class="review-properties">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Property Deeds</h2>
+				<p class="small" ng-show="property.prepareDeedShow">Please prepare the deed for my primary residence.</p>
+				<div class="review-properties-estate" ng-show="property.otherRealEstateShow">
+					<p class="small">Prepare the deed for these properties:</p>
+					<div class="review-properties-estate-repeater" ng-repeat="estate in property.estate">
+						<p>{{estate.address}}</p>
+						<p>{{estate.city}}, {{estate.county}}</p>
+						<p>{{estate.state}}, {{estate.zip}}</p>
+						<p class="small">purchased in {{estate.purchaseDate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="review-split">
+				<h2>Businesses</h2>
+				<div class="review-properties-business-repeater" ng-repeat="business in property.business">
+					<p>{{business.entity}}, {{business.entityType}}</p>
+				</div>
+			</div>
+		</div>
+		</div>
+	<divider></divider>
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
