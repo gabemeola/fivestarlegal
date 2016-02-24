@@ -33,10 +33,10 @@ angular.module("fivestarApp")
 		};
 		//Basic Template
 		$scope.basic = {
-			choice: "couple",
-			individualShow: false,
-			coupleShow: true,
-			dataShow: false,
+			choice: "individual",
+			individualShow: true,
+			coupleShow: false,
+			dataShow: true,
 			nameOfTrust: null,
 			your: {
 				fullName: null,
@@ -409,6 +409,7 @@ angular.module("fivestarApp")
 			business: {
 
 			},
+			yearPurchased: null,
 			estateAmount: 0,
 			businessAmount: 0,
 			prepareDeedShow: false,
@@ -447,4 +448,48 @@ angular.module("fivestarApp")
 			console.warn($scope.property);
 		};
 		//End of Property Template
+
+		//Review Template
+		$scope.reviewInit = function() {
+			$scope.openLeftMenu('close');
+
+			var diffMailingAddress = function(init) {
+				if(!init) {
+					$scope.review.mailingAddress = {
+						sameAs: false,
+						address: $scope.basic.mailingAddress.address,
+						city: $scope.basic.mailingAddress.city,
+						country: $scope.basic.mailingAddress.county,
+						state: $scope.basic.mailingAddress.state,
+						zip: $scope.basic.mailingAddress.zip
+					};
+				}  else {
+					$scope.review.mailingAddress.sameAs = true;
+				};
+			};
+
+			$scope.review = {
+				individual: {
+					info: {
+						nameOfTrust: $scope.basic.nameOfTrust,
+						fullName: $scope.basic.your.fullName,
+						dob: $scope.basic.your.dob,
+						tel: $scope.basic.your.phone,
+						email: $scope.basic.your.email
+					},
+
+				},
+				couple: {
+
+				},
+				address: {
+					address: $scope.basic.homeAddress.address,
+					city: $scope.basic.homeAddress.city,
+					country: $scope.basic.homeAddress.county,
+					state: $scope.basic.homeAddress.state,
+					zip: $scope.basic.homeAddress.zip
+				},
+			};
+		};
+		//End of Review Template
 	}]);

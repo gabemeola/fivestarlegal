@@ -1,7 +1,39 @@
-REVIEW WORKING
-<div class="navigator">
-	<ul>
-		<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
-		<a><li class="navigator-forward-btn">Next →</li></a>
-	</ul>
+<div class="review">
+	<div class="review-individual">
+		<div class="review-individual-info">
+			<h2>Your Info</h2>
+			<p>{{basic.your.fullName}}</p>
+			<p>{{basic.your.dob}}</p>
+			<p>{{basic.your.phone}}</p>
+			<p>{{basic.your.email}}</p>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-address">
+		<div class="review-homeAddress">
+			<h2>Home Address</h2>
+			<p>{{basic.homeAddress.address}}</p>
+			<p>{{basic.homeAddress.city}}, {{basic.homeAddress.county}}</p>
+			<p>{{basic.homeAddress.state}}, {{basic.homeAddress.zip}}</p>
+			<p class="small" ng-show="property.prepareDeedShow">purchased in {{property.yearPurchased}}</p>
+		</div>
+		<div class="review-mailingAddress">
+			<h2>Mailing Address</h2>
+			<div ng-show="basic.mailingAddress.sameAs">
+				<p>(same as home)</p>
+			</div>
+			<div ng-hide="basic.mailingAddress.sameAs">
+				<p>{{basic.mailingAddress.address}}</p>
+				<p>{{basic.mailingAddress.city}}, {{basic.mailingAddress.county}}</p>
+				<p>{{basic.mailingAddress.state}}, {{basic.mailingAddress.zip}}</p>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="navigator">
+		<ul>
+			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
+			<a><li class="navigator-forward-btn">Next →</li></a>
+		</ul>
+	</div>
 </div>

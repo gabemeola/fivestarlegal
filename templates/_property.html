@@ -13,7 +13,7 @@
 		<div class="data-wrapper">
 			<h4 class="top">Year property was purchased</h4>
 			<div class="input-wrapper">
-				<input type="number">
+				<input type="number" ng-model="property.yearPurchased">
 				<label>1969</label>
 			</div>
 		</div>
@@ -107,6 +107,6 @@
 <div class="navigator">
 	<ul>
 		<a ui-sref="healthcare"><li class="navigator-back-btn">← Back</li></a>
-		<a ui-sref="review"><li class="navigator-forward-btn">Next →</li></a>
+		<a ui-sref="review" ng-click="reviewInit()"><li class="navigator-forward-btn">Next →</li></a>
 	</ul>
 </div>
