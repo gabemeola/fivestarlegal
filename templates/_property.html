@@ -65,7 +65,7 @@
 					</div>
 				</div>
 			</div>
-			<div ng-click="addnewEstate()" class="addnew-data" id="new-property">
+			<div ng-click="addnewProperty('estate')" class="addnew-data" id="new-property">
 				<div>+ add another property</div>
 			</div>
 		</div>
@@ -78,52 +78,27 @@
 	</md-radio-group>
 	<div class="property-business-true" ng-show="property.businessShow">
 		<h5>We will prepare an assignment to transfer your business interest in to the Trust.</h5>
-		<div class="property-business-wrapper">
-			<div class="data-wrapper">
-				<h4 class="top">Name of entity</h4>
-				<div class="input-wrapper">
-					<input ng-model="temp"/>
-					<label>Acme, LLC</label>
+		<div class="property-business-new">
+			<div class="property-business-repeater" ng-repeat="business in property.business">
+				<div class="property-business-wrapper">
+					<div class="data-wrapper">
+						<h4 class="top">Name of entity</h4>
+						<div class="input-wrapper">
+							<input ng-model="business.entity"/>
+							<label>Acme, LLC</label>
+						</div>
+					</div>
+					<div class="entity-type">
+						<md-radio-group ng-model="business.entityType">
+							<h4 class="top">Entity type</h4>
+							<md-radio-button value="llc">LLC</md-radio-button>
+							<md-radio-button value="scorp">SCORP</md-radio-button>
+						</md-radio-group>
+					</div>
 				</div>
 			</div>
-			<div class="entity-type">
-				<md-radio-group ng-model="new">
-					<h4 class="top">Entity type</h4>
-					<md-radio-button value="llc">LLC</md-radio-button>
-					<md-radio-button value="scorp">SCORP</md-radio-button>
-				</md-radio-group>
-			</div>
-		</div>
-		<div class="property-business-wrapper">
-			<div class="data-wrapper">
-				<h4 class="top">Name of entity</h4>
-				<div class="input-wrapper">
-					<input ng-model="temp"/>
-					<label>Acme, LLC</label>
-				</div>
-			</div>
-			<div class="entity-type">
-				<md-radio-group ng-model="new">
-					<h4 class="top">Entity type</h4>
-					<md-radio-button value="llc">LLC</md-radio-button>
-					<md-radio-button value="scorp">SCORP</md-radio-button>
-				</md-radio-group>
-			</div>
-		</div>
-		<div class="property-business-wrapper">
-			<div class="data-wrapper">
-				<h4 class="top">Name of entity</h4>
-				<div class="input-wrapper">
-					<input ng-model="temp"/>
-					<label>Acme, LLC</label>
-				</div>
-			</div>
-			<div class="entity-type">
-				<md-radio-group ng-model="new">
-					<h4 class="top">Entity type</h4>
-					<md-radio-button value="llc">LLC</md-radio-button>
-					<md-radio-button value="scorp">SCORP</md-radio-button>
-				</md-radio-group>
+			<div ng-click="addnewProperty('business')" class="addnew-data" id="new-property">
+				<div>+ add another business</div>
 			</div>
 		</div>
 	</div>

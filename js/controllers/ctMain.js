@@ -1,6 +1,5 @@
 angular.module("fivestarApp")
 	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
-		$scope.works = "It Works";
 
 		$scope.openLeftMenu = function(init) {
 			if(init == "open") {
@@ -407,6 +406,9 @@ angular.module("fivestarApp")
 			estate: {
 
 			},
+			business: {
+
+			},
 			estateAmount: 0,
 			businessAmount: 0,
 			prepareDeedShow: false,
@@ -434,11 +436,11 @@ angular.module("fivestarApp")
 				$scope.property.businessShow = false;
 			}
 		};
-		$scope.addnewEstate = function(init) {
-			$scope.property.estateAmount++;
-			console.warn($scope.property.estateAmount);
-			var estateAmount = $scope.property.estateAmount;
-			$scope.property.estate[estateAmount] = {
+		$scope.addnewProperty = function(init) {
+			$scope.property[init + 'Amount']++;
+			console.warn($scope.property[init + 'Amount']);
+			var amount = $scope.property[init + 'Amount'];
+			$scope.property[init][amount] = {
 				name: null,
 				percentage: null
 			};
