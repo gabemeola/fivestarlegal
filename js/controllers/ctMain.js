@@ -1,6 +1,5 @@
 angular.module("fivestarApp")
 	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
-		$scope.works = "It Works";
 
 		$scope.openLeftMenu = function(init) {
 			if(init == "open") {
@@ -29,6 +28,8 @@ angular.module("fivestarApp")
 			concater(husbandChildren);
 			concater(wifeChildren);
 			$scope.concatChildren = splitedChilds;
+			console.log($scope.special.specialChips);
+			console.log($scope.special.excludedChips);
 		};
 		//Basic Template
 		$scope.basic = {
@@ -94,8 +95,8 @@ angular.module("fivestarApp")
 			},
 			currentChildren: {
 				1: {
-					name: "gabe",
-					dob: "04/26/1997"
+					name: null,
+					dob: null
 				}
 			},
 			husbandChildren: {
@@ -168,6 +169,25 @@ angular.module("fivestarApp")
 				split: "equally",
 				age: "none"
 			},
+			childrenPercentage: {
+
+			},
+			beneficiaries: {
+
+			},
+			ageChoiceOne: {
+				first: null
+			},
+			ageChoiceTwo: {
+				first: null,
+				second: null
+			},
+			ageChoiceThree: {
+				first: null,
+				second: null,
+				third: null
+			},
+			beneficiariesAmount: 0,
 			percentageShow: false,
 			oneShow: false,
 			twoShow: false,
@@ -200,6 +220,16 @@ angular.module("fivestarApp")
 				$scope.beneficiaries.threeShow = false;
 			}
 		};
+		$scope.addnewBeneficiaries = function(init) {
+			$scope.beneficiaries.beneficiariesAmount++;
+			console.warn($scope.beneficiaries.beneficiariesAmount);
+			var beneficiariesAmount = $scope.beneficiaries.beneficiariesAmount;
+			$scope.beneficiaries.beneficiaries[beneficiariesAmount] = {
+				name: null,
+				percentage: null
+			};
+			console.warn($scope.beneficiaries);
+		};
 		//End of Beneficiaries Template
 
 		//Special Template
@@ -210,6 +240,24 @@ angular.module("fivestarApp")
 				special: "no",
 				exclude: "no"
 			},
+			ageChoiceOne: {
+				first: null
+			},
+			ageChoiceTwo: {
+				first: null,
+				second: null
+			},
+			ageChoiceThree: {
+				first: null,
+				second: null,
+				third: null
+			},
+			specialChips: [
+
+			],
+			excludeChips : [
+
+			],
 			inheritanceShow: true,
 			percentageShow: false,
 			oneShow: false,
@@ -355,6 +403,15 @@ angular.module("fivestarApp")
 				otherRealEstate: "no",
 				business: "no"
 			},
+			estate: {
+
+			},
+			business: {
+
+			},
+			yearPurchased: null,
+			estateAmount: 0,
+			businessAmount: 0,
 			prepareDeedShow: false,
 			otherRealEstateShow: false,
 			businessShow: false
@@ -380,5 +437,21 @@ angular.module("fivestarApp")
 				$scope.property.businessShow = false;
 			}
 		};
+		$scope.addnewProperty = function(init) {
+			$scope.property[init + 'Amount']++;
+			console.warn($scope.property[init + 'Amount']);
+			var amount = $scope.property[init + 'Amount'];
+			$scope.property[init][amount] = {
+				name: null,
+				percentage: null
+			};
+			console.warn($scope.property);
+		};
 		//End of Property Template
+
+		//Review Template
+		$scope.reviewInit = function() {
+
+		};
+		//End of Review Template
 	}]);

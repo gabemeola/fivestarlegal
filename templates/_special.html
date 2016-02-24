@@ -14,22 +14,27 @@
 				<md-radio-button ng-click="specialAgeChoice('one')" value="one">Distribution at one age
 				</md-radio-button>
 				<div class="choice-wrapper-inputs" ng-show="special.oneShow">
-					<input class="age-choice-one" placeholder="25" type="number">
+					<input class="age-choice-one" placeholder="25" type="number" ng-model="special.ageChoiceOne.first">
 				</div>
 				<br>
 				<md-radio-button ng-click="specialAgeChoice('two')" value="two">Distribution at two ages
 				</md-radio-button>
 				<div class="choice-wrapper-inputs" ng-show="special.twoShow">
-					<h4 class="top">receive 50% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
-					<h4 class="top">remaining balance at age:</h4><input class="" placeholder="30" type="number">
+					<h4 class="top">receive 50% at age:</h4>
+					<input class="age-choice-one" placeholder="25" type="number" ng-model="special.ageChoiceTwo.first">
+					<h4 class="top">remaining balance at age:</h4>
+					<input class="" placeholder="30" type="number" ng-model="special.ageChoiceTwo.second">
 				</div>
 				<br>
 				<md-radio-button ng-click="specialAgeChoice('three')" value="three">Distribution at three ages
 				</md-radio-button>
 				<div class="choice-wrapper-inputs" ng-show="special.threeShow">
-					<h4 class="top">receive 33% at age:</h4><input class="age-choice-one" placeholder="25" type="number">
-					<h4 class="top">receive 33% at age:</h4><input class="" placeholder="30" type="number">
-					<h4 class="top">remaining balance at age:</h4><input class="" placeholder="35" type="number">
+					<h4 class="top">receive 33% at age:</h4>
+					<input class="age-choice-one" placeholder="25" type="number" ng-model="special.ageChoiceThree.first">
+					<h4 class="top">receive 33% at age:</h4>
+					<input class="" placeholder="30" type="number" ng-model="special.ageChoiceThree.second">
+					<h4 class="top">remaining balance at age:</h4>
+					<input class="" placeholder="35" type="number" ng-model="special.ageChoiceThree.third">
 				</div>
 				<br>
 			</md-radio-group>
@@ -46,9 +51,16 @@
 	</md-radio-group>
 	<div class="special-specialneeds" ng-show="special.specialNeedsShow">
 		<h5>We will prepare a Special Needs Trust that will hold their share of the Trust Estate so that their state or government assistance is not affected.</h5>
-		<md-select ng-model="childselect">
-			<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
-		</md-select>
+		<div class="chips-wrapper-special">
+			<md-chips ng-model="special.specialChips" placeholder="Add a Name">
+				<md-chip-template>
+					<strong>{{$chip}}</strong>
+				</md-chip-template>
+			</md-chips>
+		</div>
+		<!--<md-select ng-model="childselect">-->
+			<!--<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>-->
+		<!--</md-select>-->
 	</div>
 	<divider></divider>
 	<h2>Are there any children that you have intentionally <i>excluded?</i></h2>
@@ -57,15 +69,19 @@
 		<md-radio-button ng-click="specialExcludeChoice('no')" value="no">No</md-radio-button>
 	</md-radio-group>
 	<div class="special-exclude" ng-show="special.excludeShow">
-		<md-select ng-model="childselect">
-			<md-option ng-repeat="child in concatChildren" value="{{child.name}}">{{child.name}}</md-option>
-		</md-select>
+		<div class="chips-wrapper-exclude">
+			<md-chips ng-model="special.excludeChips" placeholder="Add a Name">
+				<md-chip-template>
+					<strong>{{$chip}}</strong>
+				</md-chip-template>
+			</md-chips>
+		</div>
 	</div>
 	<divider></divider>
 	<div class="navigator">
 		<ul>
-			<li class="navigator-back-btn" ui-sref="beneficiaries">← Back</li>
-			<li class="navigator-forward-btn" ui-sref="power">Next →</li>
+			<a ui-sref="beneficiaries"><li class="navigator-back-btn">← Back</li></a>
+			<a ui-sref="power"><li class="navigator-forward-btn">Next →</li></a>
 		</ul>
 	</div>
 </div>

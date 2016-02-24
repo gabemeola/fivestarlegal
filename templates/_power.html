@@ -97,7 +97,7 @@
 				</div>
 			</div>
 			<br>
-			<md-checkbox ng-model="power.couple.husband.coAgents" ng-true-value="true" ng-false-value="false">
+			<md-checkbox ng-model="power.couple.wife.coAgents" ng-true-value="true" ng-false-value="false">
 				Agents should act together as Co-Agents.
 				<br>
 				<span class="optional">This means that they would be required to work together to make decisions.</span>
@@ -129,8 +129,8 @@
 	<divider></divider>
 	<div class="navigator">
 		<ul>
-			<li class="navigator-back-btn" ui-sref="special">← Back</li>
-			<li class="navigator-forward-btn" ui-sref="healthcare">Next →</li>
+			<a ui-sref="special"><li class="navigator-back-btn">← Back</li></a>
+			<a ui-sref="healthcare"><li class="navigator-forward-btn">Next →</li></a>
 		</ul>
 	</div>
 </div>

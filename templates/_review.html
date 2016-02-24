@@ -1,7 +1,217 @@
-REVIEW WORKING
-<div class="navigator">
-	<ul>
-		<li class="navigator-back-btn" ui-sref="property">← Back</li>
-		<li class="navigator-forward-btn">Next →</li>
-	</ul>
+<div class="review">
+	<div class="review-individual" ng-show="basic.individualShow">
+		<div class="review-individual-info">
+			<h2>Your Info</h2>
+			<p>{{basic.your.fullName}}</p>
+			<p>{{basic.your.dob}}</p>
+			<p>{{basic.your.phone}}</p>
+			<p>{{basic.your.email}}</p>
+		</div>
+	</div>
+	<div class="review-couple" ng-show="basic.coupleShow">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<div class="review-couple-info">
+					<h2>Husband</h2>
+					<p>{{basic.husband.fullName}}</p>
+					<p>{{basic.husband.dob}}</p>
+					<p>{{basic.husband.phone}}</p>
+					<p>{{basic.husband.email}}</p>
+				</div>
+			</div>
+			<div class="review-split">
+				<h2>Wife</h2>
+				<p>{{basic.wife.fullName}}</p>
+				<p>{{basic.wife.dob}}</p>
+				<p>{{basic.wife.phone}}</p>
+				<p>{{basic.wife.email}}</p>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-address">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Home Address</h2>
+				<p>{{basic.homeAddress.address}}</p>
+				<p>{{basic.homeAddress.city}}, {{basic.homeAddress.county}}</p>
+				<p>{{basic.homeAddress.state}}, {{basic.homeAddress.zip}}</p>
+				<p class="small" ng-show="property.prepareDeedShow">purchased in {{property.yearPurchased}}</p>
+			</div>
+			<div class="review-split">
+				<h2>Mailing Address</h2>
+				<div ng-show="basic.mailingAddress.sameAs">
+					<p>(same as home)</p>
+				</div>
+				<div ng-hide="basic.mailingAddress.sameAs">
+					<p>{{basic.mailingAddress.address}}</p>
+					<p>{{basic.mailingAddress.city}}, {{basic.mailingAddress.county}}</p>
+					<p>{{basic.mailingAddress.state}}, {{basic.mailingAddress.zip}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-children">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Children</h2>
+				<div class="review-children-repeater" ng-repeat="child in concatChildren">
+					<p>{{child.name}}, {{child.dob}}</p>
+				</div>
+			</div>
+			<div class="review-split">
+				<h2>Guardian(s)</h2>
+				<p>{{trustees.guardian.firstChoice}}</p>
+				<p>{{trustees.guardian.secondChoice}}</p>
+				<p class="small" ng-show="trustees.coGuardians">acting as co-guardians</p>
+			</div>
+		</div>
+		<h2>Special Needs</h2>
+		<div class="review-special" ng-repeat="child in special.specialChips">
+			<p class="special">{{child}}</p>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-successor">
+		<h2>Successor Trustee(s)</h2>
+		<p>{{trustees.successor.firstChoice}}</p>
+		<p>{{trustees.successor.secondChoice}}</p>
+		<p class="small" ng-show="trustees.coTrustees">acting as co-guardians</p>
+	</div>
+	<divider></divider>
+	<div class="review-beneficiaries">
+		<h2>Beneficiaries</h2>
+		<p>I would like to divide the assets as follows:</p>
+		<div class="review-beneficiaries-children" ng-repeat="child in concatChildren">
+			<p>{{child.name}}: {{child.percentage}}%</p>
+		</div>
+		<div class="review-beneficiaries-others" ng-repeat="beneficiary in beneficiaries.beneficiaries">
+			<p>{{beneficiary.name}}: {{beneficiary.percentage}}%</p>
+		</div>
+		<br>
+		<h2>Excluded Children</h2>
+		<div class="review-excluded" ng-repeat="child in special.excludeChips">
+			<p class="excluded">{{child}}</p>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-power">
+		<h2>Durable Power of Attorney</h2>
+		<div class="review-power-individual" ng-show="basic.individualShow">
+			<p><b>Primary Agents:</b></p>
+			<p>{{power.individual.firstChoice}}</p>
+			<p>{{power.individual.secondChoice}}</p>
+			<p class="small" ng-show="power.individual.coAgents">acting as co-agents</p>
+		</div>
+		<div class="review-power-couple" ng-show="basic.coupleShow">
+			<div class="review-split-wrapper">
+				<div class="review-split">
+					<h2>Husband</h2>
+					<div class="review-husband-primary" ng-show="power.husbandPrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{power.couple.husbandPrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.husbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-husband-alt" ng-show="power.altHusbandPrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{power.couple.altHusbandPrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.altHusbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="power.couple.husband.coAgents">acting as co-agents</p>
+				</div>
+				<div class="review-split">
+					<h2>Wife</h2>
+					<div class="review-wife-primary" ng-show="power.wifePrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{power.couple.wifePrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.wifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-wife-alt" ng-show="power.altWifePrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{power.couple.altWifePrimaryAgent.firstChoice}}</p>
+						<p>{{power.couple.altWifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="power.couple.wife.coAgents">acting as co-agents</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-healthcare">
+		<h2>Durable Power of Attorney</h2>
+		<div class="review-power-individual" ng-show="basic.individualShow">
+			<p><b>Primary Agents:</b></p>
+			<p>{{healthcare.individual.firstChoice}}</p>
+			<p>{{healthcare.individual.secondChoice}}</p>
+			<p class="small" ng-show="healthcare.individual.coAgents">acting as co-agents</p>
+		</div>
+		<div class="review-healthcare-couple" ng-show="basic.coupleShow">
+			<div class="review-split-wrapper">
+				<div class="review-split">
+					<h2>Husband</h2>
+					<div class="review-husband-primary" ng-show="healthcare.husbandPrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{healthcare.couple.husbandPrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.husbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-husband-alt" ng-show="healthcare.altHusbandPrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{healthcare.couple.altHusbandPrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.altHusbandPrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="healthcare.couple.husband.coAgents">acting as co-agents</p>
+				</div>
+				<div class="review-split">
+					<h2>Wife</h2>
+					<div class="review-wife-primary" ng-show="healthcare.wifePrimaryAgentShow">
+						<p>My spouse will be my primary agent.</p>
+						<p><b>Alternate Agents:</b></p>
+						<p>{{healthcare.couple.wifePrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.wifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<div class="review-wife-alt" ng-show="healthcare.altWifePrimaryAgentShow">
+						<p><b>Primary Agents:</b></p>
+						<p>{{healthcare.couple.altWifePrimaryAgent.firstChoice}}</p>
+						<p>{{healthcare.couple.altWifePrimaryAgent.secondChoice}}</p>
+					</div>
+					<p class="small" ng-show="healthcare.couple.wife.coAgents">acting as co-agents</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<divider></divider>
+	<div class="review-properties">
+		<div class="review-split-wrapper">
+			<div class="review-split">
+				<h2>Property Deeds</h2>
+				<p class="small" ng-show="property.prepareDeedShow">Please prepare the deed for my primary residence.</p>
+				<div class="review-properties-estate" ng-show="property.otherRealEstateShow">
+					<p class="small">Prepare the deed for these properties:</p>
+					<div class="review-properties-estate-repeater" ng-repeat="estate in property.estate">
+						<p>{{estate.address}}</p>
+						<p>{{estate.city}}, {{estate.county}}</p>
+						<p>{{estate.state}}, {{estate.zip}}</p>
+						<p class="small">purchased in {{estate.purchaseDate}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="review-split">
+				<h2>Businesses</h2>
+				<div class="review-properties-business-repeater" ng-repeat="business in property.business">
+					<p>{{business.entity}}, <span class="caps">{{business.entityType}}</span></p>
+				</div>
+			</div>
+		</div>
+		</div>
+	<divider></divider>
+	<div class="navigator">
+		<ul>
+			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
+			<a><li class="navigator-forward-btn">Next →</li></a>
+		</ul>
+	</div>
 </div>
