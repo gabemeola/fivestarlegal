@@ -1,5 +1,5 @@
 angular.module("fivestarApp")
-	.controller("ctMain", ["$scope", "$mdSidenav", function($scope, $mdSidenav) {
+	.controller("ctMain", ["$scope", "$mdSidenav", "$http", function($scope, $mdSidenav, $http) {
 
 		$scope.openLeftMenu = function(init) {
 			if(init == "open") {
@@ -451,7 +451,23 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
-
+			$http({
+				url: "http://formspree.io/gabemeola@gmail.com",
+				method: "POST",
+				data: {
+					_subject: "Five Star Legal Form Submission",
+					_cc: "gabe@fatecreations.com",
+					_replyto: "gabe@fatecreations.com",
+					Name: "Peter Gabriel",
+					kids: ["Gabe", "dave", "peter"],
+					email: "gabe@fatecreations.com",
+					Phone: "385-201-9950"
+				},
+				dataType: "json"
+			}).then(function(res) {
+				console.warn(res);
+			});
+			console.warn("review init ran");
 		};
 		//End of Review Template
 	}]);
