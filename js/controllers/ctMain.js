@@ -577,8 +577,38 @@ angular.module("fivestarApp")
 						tempData+="Durable Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
 					}
 				}
+			}
 
+			if($scope.basic.individualShow) {
+				tempData+="Medical Power of Attorney: First Choice=" + $scope.healthcare.individual.firstChoice + ampersand;
+				tempData+="Medical Power of Attorney: Second Choice=" + $scope.healthcare.individual.secondChoice + ampersand;
+				if($scope.healthcare.individual.coAgents) {
+					tempData+="Medical Power of Attorney: CoAgents=" + "Acting as co-agents" + ampersand;
+				}
+			} else if ($scope.basic.coupleShow) {
+				if ($scope.healthcare.husbandPrimaryAgentShow) {
+					tempData+="Medical Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
+					tempData+="Medical Power of Attorney: Husband's First Choice=" + healthcare.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's Second Choice=" + healthcare.couple.husbandPrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.healthcare.altHusbandPrimaryAgentShow) {
+					tempData+="Medical Power of Attorney: Husband's First Choice=" + healthcare.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's Second Choice=" + healthcare.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					if ($scope.healthcare.couple.husband.coAgents) {
+						tempData+="Medical Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
 
+				if ($scope.healthcare.wifePrimaryAgentShow) {
+					tempData+="Medical Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
+					tempData+="Medical Power of Attorney: Wife's First Choice=" + healthcare.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's Second Choice=" + healthcare.couple.wifePrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.healthcare.altWifePrimaryAgentShow) {
+					tempData+="Medical Power of Attorney: Wife's First Choice=" + healthcare.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's Second Choice=" + healthcare.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					if ($scope.healthcare.couple.wife.coAgents) {
+						tempData+="Medical Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
 			}
 			console.warn(tempData);
 			$http({
