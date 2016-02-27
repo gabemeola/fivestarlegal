@@ -461,35 +461,35 @@ angular.module("fivestarApp")
 			if($scope.basic.individualShow) {
 				tempData._replyto = $scope.basic.your.email;
 				tempData.Name = $scope.basic.your.fullName;
-				tempData.Date_of_Birth = $scope.basic.your.dob;
+				tempData["Date of Birth"] = $scope.basic.your.dob;
 				tempData.Email = $scope.basic.your.email;
 				tempData.Phone = $scope.basic.your.phone
 			} else if ($scope.basic.coupleShow) {
-				tempData.Husband_Name = $scope.basic.husband.fullName;
-				tempData.Husband_Date_of_Birth = $scope.basic.husband.dob;
-				tempData.Husband_Phone = $scope.basic.husband.phone;
-				tempData.Husband_Email = $scope.basic.husband.email;
+				tempData["Husband Name"] = $scope.basic.husband.fullName;
+				tempData["Husband Date of Birth"] = $scope.basic.husband.dob;
+				tempData["Husband Phone"] = $scope.basic.husband.phone;
+				tempData["Husband Email"] = $scope.basic.husband.email;
 
-				tempData.Wife_Name = $scope.basic.wife.fullName;
-				tempData.Wife_Date_of_Birth = $scope.basic.wife.dob;
-				tempData.Wife_Phone = $scope.basic.wife.phone;
-				tempData.Wife_Email = $scope.basic.wife.email
+				tempData["Wife Name"] = $scope.basic.wife.fullName;
+				tempData["Wife Date of Birth"] = $scope.basic.wife.dob;
+				tempData["Wife Phone"] = $scope.basic.wife.phone;
+				tempData["Wife Email"] = $scope.basic.wife.email
 			};
 
-			tempData.Home_Address = $scope.basic.homeAddress.address;
-			tempData.Home_City = $scope.basic.homeAddress.city;
-			tempData.Home_State = $scope.basic.homeAddress.state;
-			tempData.Home_County = $scope.basic.homeAddress.county;
-			tempData.Home_Zip = $scope.basic.homeAddress.zip;
-			tempData.Home_Purchased_In = $scope.property.yearPurchased;
+			tempData["Home Address"] = $scope.basic.homeAddress.address;
+			tempData["Home City"] = $scope.basic.homeAddress.city;
+			tempData["Home State"] = $scope.basic.homeAddress.state;
+			tempData["Home County"] = $scope.basic.homeAddress.county;
+			tempData["Home Zip"] = $scope.basic.homeAddress.zip;
+			tempData["Home Purchased In"] = $scope.property.yearPurchased;
 			if(!$scope.basic.mailingAddress.sameAs) {
-				tempData.Mailing_Address = $scope.basic.mailingAddress.address;
-				tempData.Mailing_City = $scope.basic.mailingAddress.city;
-				tempData.Mailing_State = $scope.basic.mailingAddress.state;
-				tempData.Mailing_County = $scope.basic.mailingAddress.county;
-				tempData.Mailing_Zip = $scope.basic.mailingAddress.zip;
+				tempData["Mailing Address"] = $scope.basic.mailingAddress.address;
+				tempData["Mailing City"] = $scope.basic.mailingAddress.city;
+				tempData["Mailing State"] = $scope.basic.mailingAddress.state;
+				tempData["Mailing County"] = $scope.basic.mailingAddress.county;
+				tempData["Mailing Zip"] = $scope.basic.mailingAddress.zip;
 			} else if ($scope.basic.mailingAddress.sameAs) {
-				tempData.Mailing_Address = "Same As Home Address";
+				tempData["Mailing Address"] = "Same As Home Address";
 			}
 
 			if($scope.children.choice.currentChildren == "yes") {
@@ -501,42 +501,32 @@ angular.module("fivestarApp")
 				tempConcat.forEach(function(child) {
 					tempConcatIt++;
 
-					tempData[tempConcatIt + "-Child_Name"] = child.name;
-					tempData[child.name + "_Date_of_Birth"] = child.dob;
+					tempData[tempConcatIt + "- Child Name"] = child.name;
+					tempData[child.name + " Date of Birth"] = child.dob;
 					tempData["Percentage for " + child.name] = child.percentage;
 				});
 
-				tempData.Guardians_First_Choice = $scope.trustees.guardian.firstChoice;
-				tempData.Guardians_Second_Choice = $scope.trustees.guardian.secondChoice;
+				tempData["Guardians First Choice"] = $scope.trustees.guardian.firstChoice;
+				tempData["Guardians Second Choice"] = $scope.trustees.guardian.secondChoice;
 				if($scope.trustees.coGuardians) {
-					tempData.Guardians_CoGuardians = "Acting as co-guardians";
+					tempData["Guardians Co-Guardians"] = "Acting as co-guardians";
 				}
 
 				if($scope.special.specialChips) {
 					tempSpecial.forEach(function (child) {
 						tempSpecialIt++;
 
-						tempData["Special_Needs_Children-" + tempSpecialIt] = child;
+						tempData["Special Needs Children - " + tempSpecialIt] = child;
 					});
 				}
 			}
 
-			tempData.Successor_First_Choice = $scope.trustees.successor.firstChoice;
-			tempData.Successor_Second_Choice = $scope.trustees.successor.secondChoice;
+			tempData["Successor First Choice"] = $scope.trustees.successor.firstChoice;
+			tempData["Successor Second Choice"] = $scope.trustees.successor.secondChoice;
 			if($scope.trustees.coTrustees) {
-				tempData.Successor_CoTrustees = "Acting as co-trustees";
+				tempData["Successor Co-Trustees"] = "Acting as co-trustees";
 			}
 
-			if($scope.beneficiaries.beneficiaries){
-				var tempBeneficairies = $scope.beneficiaries.beneficiaries,
-						tempBeneficairiesIt = 0;
-				tempBeneficairies.forEach(function (beneficiary) {
-					tempBeneficairiesIt++;
-
-					tempData[tempBeneficairiesIt + "-Beneficiary"] = beneficiary.name;
-					tempData["Percentage for " + beneficiary.name] = beneficiary.percentage;
-				});
-			}
 
 			if($scope.special.excludeChips) {
 				var tempExcluded = $scope.special.excludeChips,
@@ -544,7 +534,7 @@ angular.module("fivestarApp")
 				tempExcluded.forEach(function (child) {
 					tempExcludedIt++;
 
-					tempData["Excluded_Children-" + tempExcludedIt] = child;
+					tempData["Excluded Children - " + tempExcludedIt] = child;
 				});
 			}
 
@@ -566,8 +556,20 @@ angular.module("fivestarApp")
 				method: "POST",
 				_subject: "Five Star Legal Form Submission",
 				_replyto: "gabe@fatecreations.com",
-				data: tempData,
-				dataType: "json"
+				data: {
+					person :[
+							{ name: 'Homer', age: 50,   kids :[
+							{ name: 'Liza', age: 9 },
+							{ name: 'Bart', age: 8 },
+							{name: 'Maggie', age: 2 }
+						] }
+					]
+				},
+				dataType: "json",
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
 			}).then(function(res) {
 				console.warn(res);
 			});
