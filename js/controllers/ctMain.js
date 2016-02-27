@@ -185,10 +185,10 @@ angular.module("fivestarApp")
 				second: null,
 				third: null
 			},
-			beneficiaries: {
+			beneficiaries: [
 
-			},
-			beneficiariesAmount: 0,
+			],
+			beneficiariesAmount: -1,
 			percentageShow: false,
 			oneShow: false,
 			twoShow: false,
@@ -517,6 +517,17 @@ angular.module("fivestarApp")
 						tempData+="Special Needs Children - " + tempSpecialIt + "=" + child + ampersand;
 					});
 				}
+			}
+
+			if($scope.beneficiaries.beneficiaries){
+				var tempBeneficairies = $scope.beneficiaries.beneficiaries,
+					tempBeneficairiesIt = 0;
+				tempBeneficairies.forEach(function (beneficiary) {
+					tempBeneficairiesIt++;
+					console.warn("For Each on bene ran");
+					tempData+=tempBeneficairiesIt + " - Beneficiary=" + beneficiary.name + ampersand;
+					tempData+="Percentage for " + beneficiary.name + "=" + beneficiary.percentage + ampersand;
+				});
 			}
 
 			tempData+="Successor First Choice=" + $scope.trustees.successor.firstChoice + ampersand;
