@@ -406,15 +406,15 @@ angular.module("fivestarApp")
 				otherRealEstate: "no",
 				business: "no"
 			},
-			estate: {
+			estate: [
 
-			},
-			business: {
+			],
+			business: [
 
-			},
+			],
 			yearPurchased: null,
-			estateAmount: 0,
-			businessAmount: 0,
+			estateAmount: -1,
+			businessAmount: -1,
 			prepareDeedShow: false,
 			otherRealEstateShow: false,
 			businessShow: false
@@ -479,7 +479,9 @@ angular.module("fivestarApp")
 			tempData+="Home State=" + $scope.basic.homeAddress.state + ampersand;
 			tempData+="Home County=" + $scope.basic.homeAddress.county + ampersand;
 			tempData+="Home Zip=" + $scope.basic.homeAddress.zip + ampersand;
-			tempData+="Home Purchased In=" + $scope.property.yearPurchased + ampersand;
+			if($scope.property.prepareDeedShow) {
+				tempData += "Home Purchased In=" + $scope.property.yearPurchased + ampersand;
+			}
 			if(!$scope.basic.mailingAddress.sameAs) {
 				tempData+="Mailing Address=" + $scope.basic.mailingAddress.address + ampersand;
 				tempData+="Mailing City=" + $scope.basic.mailingAddress.city + ampersand;
@@ -556,11 +558,11 @@ angular.module("fivestarApp")
 			} else if ($scope.basic.coupleShow) {
 				if ($scope.power.husbandPrimaryAgentShow) {
 					tempData+="Durable Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
-					tempData+="Durable Power of Attorney: Husband's First Choice=" + power.couple.husbandPrimaryAgent.firstChoice + ampersand;
-					tempData+="Durable Power of Attorney: Husband's Second Choice=" + power.couple.husbandPrimaryAgent.secondChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's First Choice=" + $scope.power.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's Second Choice=" + $scope.power.couple.husbandPrimaryAgent.secondChoice + ampersand;
 				} else if ($scope.power.altHusbandPrimaryAgentShow) {
-					tempData+="Durable Power of Attorney: Husband's First Choice=" + power.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
-					tempData+="Durable Power of Attorney: Husband's Second Choice=" + power.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's First Choice=" + $scope.power.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's Second Choice=" + $scope.power.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
 					if ($scope.power.couple.husband.coAgents) {
 						tempData+="Durable Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
 					}
@@ -568,11 +570,11 @@ angular.module("fivestarApp")
 
 				if ($scope.power.wifePrimaryAgentShow) {
 					tempData+="Durable Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
-					tempData+="Durable Power of Attorney: Wife's First Choice=" + power.couple.wifePrimaryAgent.firstChoice + ampersand;
-					tempData+="Durable Power of Attorney: Wife's Second Choice=" + power.couple.wifePrimaryAgent.secondChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's First Choice=" + $scope.power.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's Second Choice=" + $scope.power.couple.wifePrimaryAgent.secondChoice + ampersand;
 				} else if ($scope.power.altWifePrimaryAgentShow) {
-					tempData+="Durable Power of Attorney: Wife's First Choice=" + power.couple.altWifePrimaryAgent.firstChoice + ampersand;
-					tempData+="Durable Power of Attorney: Wife's Second Choice=" + power.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's First Choice=" + $scope.power.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's Second Choice=" + $scope.power.couple.altWifePrimaryAgent.secondChoice + ampersand;
 					if ($scope.power.couple.wife.coAgents) {
 						tempData+="Durable Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
 					}
@@ -588,11 +590,11 @@ angular.module("fivestarApp")
 			} else if ($scope.basic.coupleShow) {
 				if ($scope.healthcare.husbandPrimaryAgentShow) {
 					tempData+="Medical Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
-					tempData+="Medical Power of Attorney: Husband's First Choice=" + healthcare.couple.husbandPrimaryAgent.firstChoice + ampersand;
-					tempData+="Medical Power of Attorney: Husband's Second Choice=" + healthcare.couple.husbandPrimaryAgent.secondChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's First Choice=" + $scope.healthcare.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's Second Choice=" + $scope.healthcare.couple.husbandPrimaryAgent.secondChoice + ampersand;
 				} else if ($scope.healthcare.altHusbandPrimaryAgentShow) {
-					tempData+="Medical Power of Attorney: Husband's First Choice=" + healthcare.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
-					tempData+="Medical Power of Attorney: Husband's Second Choice=" + healthcare.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's First Choice=" + $scope.healthcare.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Husband's Second Choice=" + $scope.healthcare.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
 					if ($scope.healthcare.couple.husband.coAgents) {
 						tempData+="Medical Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
 					}
@@ -600,16 +602,44 @@ angular.module("fivestarApp")
 
 				if ($scope.healthcare.wifePrimaryAgentShow) {
 					tempData+="Medical Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
-					tempData+="Medical Power of Attorney: Wife's First Choice=" + healthcare.couple.wifePrimaryAgent.firstChoice + ampersand;
-					tempData+="Medical Power of Attorney: Wife's Second Choice=" + healthcare.couple.wifePrimaryAgent.secondChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's First Choice=" + $scope.healthcare.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's Second Choice=" + $scope.healthcare.couple.wifePrimaryAgent.secondChoice + ampersand;
 				} else if ($scope.healthcare.altWifePrimaryAgentShow) {
-					tempData+="Medical Power of Attorney: Wife's First Choice=" + healthcare.couple.altWifePrimaryAgent.firstChoice + ampersand;
-					tempData+="Medical Power of Attorney: Wife's Second Choice=" + healthcare.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's First Choice=" + $scope.healthcare.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Medical Power of Attorney: Wife's Second Choice=" + $scope.healthcare.couple.altWifePrimaryAgent.secondChoice + ampersand;
 					if ($scope.healthcare.couple.wife.coAgents) {
 						tempData+="Medical Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
 					}
 				}
 			}
+
+			if($scope.property.prepareDeedShow){
+				tempData+="Primary Residance=" + "Please prepare the deed for my primary residence." + ampersand;
+			}
+			if($scope.property.otherRealEstateShow){
+				var tempEstate = $scope.property.estate,
+						otherRealEstateIt = 0;
+				tempEstate.forEach(function (estate) {
+					otherRealEstateIt++;
+					tempData+= otherRealEstateIt + " - Estate=" + "true" + ampersand;
+					tempData+= otherRealEstateIt + " Address=" + estate.address + ampersand;
+					tempData+= otherRealEstateIt + " City=" + estate.city + ampersand;
+					tempData+= otherRealEstateIt + " County=" + estate.county + ampersand;
+					tempData+= otherRealEstateIt + " State=" + estate.state + ampersand;
+					tempData+= otherRealEstateIt + " Zip=" + estate.zip + ampersand;
+					tempData+= otherRealEstateIt + " Purchase Date=" + estate.purchaseDate + ampersand;
+				});
+			}
+			if($scope.property.businessShow){
+				var tempBusiness = $scope.property.business,
+						otherBusinessIt = 0;
+				tempBusiness.forEach(function (business) {
+					otherBusinessIt++;
+					tempData+= otherBusinessIt + " - Business=" + business.entity + ampersand;
+					tempData+= business.entity + " Entity Type=" + business.entityType + ampersand;
+				});
+			}
+
 			console.warn(tempData);
 			$http({
 				url: "http://formspree.io/gabemeola@gmail.com",

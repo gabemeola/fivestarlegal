@@ -200,9 +200,11 @@
 				</div>
 			</div>
 			<div class="review-split">
+				<div class="review-busines-show" ng-show="property.businessShow">
 				<h2>Businesses</h2>
 				<div class="review-properties-business-repeater" ng-repeat="business in property.business">
 					<p>{{business.entity}}, <span class="caps">{{business.entityType}}</span></p>
+				</div>
 				</div>
 			</div>
 		</div>
