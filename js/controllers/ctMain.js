@@ -519,6 +519,16 @@ angular.module("fivestarApp")
 				}
 			}
 
+			if($scope.special.excludeChips) {
+				var tempExcluded = $scope.special.excludeChips,
+					tempExcludedIt = 0;
+				tempExcluded.forEach(function (child) {
+					tempExcludedIt++;
+
+					tempData+="Excluded Children - " + tempExcludedIt + "=" + child + ampersand;
+				});
+			}
+
 			if($scope.beneficiaries.beneficiaries){
 				var tempBeneficairies = $scope.beneficiaries.beneficiaries,
 					tempBeneficairiesIt = 0;
@@ -537,31 +547,39 @@ angular.module("fivestarApp")
 			}
 
 
-			if($scope.special.excludeChips) {
-				var tempExcluded = $scope.special.excludeChips,
-						tempExcludedIt = 0;
-				tempExcluded.forEach(function (child) {
-					tempExcludedIt++;
+			if($scope.basic.individualShow) {
+				tempData+="Durable Power of Attorney: First Choice=" + $scope.power.individual.firstChoice + ampersand;
+				tempData+="Durable Power of Attorney: Second Choice=" + $scope.power.individual.secondChoice + ampersand;
+				if($scope.power.individual.coAgents) {
+					tempData+="Durable Power of Attorney: CoAgents=" + "Acting as co-agents" + ampersand;
+				}
+			} else if ($scope.basic.coupleShow) {
+				if ($scope.power.husbandPrimaryAgentShow) {
+					tempData+="Durable Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
+					tempData+="Durable Power of Attorney: Husband's First Choice=" + power.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's Second Choice=" + power.couple.husbandPrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.power.altHusbandPrimaryAgentShow) {
+					tempData+="Durable Power of Attorney: Husband's First Choice=" + power.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Husband's Second Choice=" + power.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					if ($scope.power.couple.husband.coAgents) {
+						tempData+="Durable Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
 
-					tempData+="Excluded Children - " + tempExcludedIt + "=" + child + ampersand;
-				});
+				if ($scope.power.wifePrimaryAgentShow) {
+					tempData+="Durable Power of Attorney=" + "My spouse will be my primary agent." + ampersand;
+					tempData+="Durable Power of Attorney: Wife's First Choice=" + power.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's Second Choice=" + power.couple.wifePrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.power.altWifePrimaryAgentShow) {
+					tempData+="Durable Power of Attorney: Wife's First Choice=" + power.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData+="Durable Power of Attorney: Wife's Second Choice=" + power.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					if ($scope.power.couple.wife.coAgents) {
+						tempData+="Durable Power of Attorney: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
+
+
 			}
-
-			//if($scope.basic.individualShow) {
-			//	tempData.Durable_Power_of_Attorney_First_Choice = $scope.power.individual.firstChoice;
-			//	tempData.Durable_Power_of_Attorney_Second_Choice = $scope.power.individual.secondChoice;
-			//	if($scope.power.individual.coAgents) {
-			//		tempData.Durable_Power_of_Attorney_CoAgents = "Acting as co-agents";
-			//	}
-			//} else if ($scope.basic.coupleShow) {
-			//	if ($scope.power.husbandPrimaryAgentShow) {
-			//		tempData.
-			//	}
-			//}
-			var newtempData = '';
-			newtempData+='Name='+tempData._name;
-			newtempData+='&Subject='+tempData._subject;
-			var tempDati = 'Name=Ghulam+Yaseen&Email=test%40email.com&Message=Test+Message&Home_state=Utah&zip=84005&another_argument=Test&_gotcha=&_subject=Test+Subject&_cc=yaseen_saqib2001%40yahoo.com';
 			console.warn(tempData);
 			$http({
 				url: "http://formspree.io/gabemeola@gmail.com",
