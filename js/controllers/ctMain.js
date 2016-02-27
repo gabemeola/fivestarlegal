@@ -454,42 +454,40 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
-			var tempData = {
-				_subject: " New Five Star Legal Form Submission"
-			};
+			var tempData = "_subject=New Five Star Legal Form Submission&",
+					ampersand = "&";
 
 			if($scope.basic.individualShow) {
-				tempData._replyto = $scope.basic.your.email;
-				tempData.Name = $scope.basic.your.fullName;
-				tempData["Date of Birth"] = $scope.basic.your.dob;
-				tempData.Email = $scope.basic.your.email;
-				tempData.Phone = $scope.basic.your.phone
+				tempData+="_replyto=" + $scope.basic.your.email + "&";
+				tempData+="Name=" + $scope.basic.your.fullName + "&";
+				tempData+="Date of Birth=" + $scope.basic.your.dob + "&";
+				tempData+="Email=" + $scope.basic.your.email + "&";
+				tempData+="Phone=" + $scope.basic.your.phone; + "&";
 			} else if ($scope.basic.coupleShow) {
-				tempData["Husband Name"] = $scope.basic.husband.fullName;
-				tempData["Husband Date of Birth"] = $scope.basic.husband.dob;
-				tempData["Husband Phone"] = $scope.basic.husband.phone;
-				tempData["Husband Email"] = $scope.basic.husband.email;
-
-				tempData["Wife Name"] = $scope.basic.wife.fullName;
-				tempData["Wife Date of Birth"] = $scope.basic.wife.dob;
-				tempData["Wife Phone"] = $scope.basic.wife.phone;
-				tempData["Wife Email"] = $scope.basic.wife.email
+				tempData+="Husband Name=" + $scope.basic.husband.fullName + ampersand;
+				tempData+="Husband Date of Birth=" + $scope.basic.husband.dob + ampersand;
+				tempData+="Husband Phone=" + $scope.basic.husband.phone + ampersand;
+				tempData+="Husband Email=" + $scope.basic.husband.email + ampersand;
+				tempData+="Wife Name=" + $scope.basic.wife.fullName + ampersand;
+				tempData+="Wife Date of Birth=" + $scope.basic.wife.dob + ampersand;
+				tempData+="Wife Phone=" + $scope.basic.wife.phone + ampersand;
+				tempData+="Wife Email=" + $scope.basic.wife.email + ampersand
 			};
 
-			tempData["Home Address"] = $scope.basic.homeAddress.address;
-			tempData["Home City"] = $scope.basic.homeAddress.city;
-			tempData["Home State"] = $scope.basic.homeAddress.state;
-			tempData["Home County"] = $scope.basic.homeAddress.county;
-			tempData["Home Zip"] = $scope.basic.homeAddress.zip;
-			tempData["Home Purchased In"] = $scope.property.yearPurchased;
+			tempData+="Home Address=" + $scope.basic.homeAddress.address + ampersand;
+			tempData+="Home City=" + $scope.basic.homeAddress.city + ampersand;
+			tempData+="Home State=" + $scope.basic.homeAddress.state + ampersand;
+			tempData+="Home County=" + $scope.basic.homeAddress.county + ampersand;
+			tempData+="Home Zip=" + $scope.basic.homeAddress.zip + ampersand;
+			tempData+="Home Purchased In=" + $scope.property.yearPurchased + ampersand;
 			if(!$scope.basic.mailingAddress.sameAs) {
-				tempData["Mailing Address"] = $scope.basic.mailingAddress.address;
-				tempData["Mailing City"] = $scope.basic.mailingAddress.city;
-				tempData["Mailing State"] = $scope.basic.mailingAddress.state;
-				tempData["Mailing County"] = $scope.basic.mailingAddress.county;
-				tempData["Mailing Zip"] = $scope.basic.mailingAddress.zip;
+				tempData+="Mailing Address=" + $scope.basic.mailingAddress.address + ampersand;
+				tempData+="Mailing City=" + $scope.basic.mailingAddress.city + ampersand;
+				tempData+="Mailing State=" + $scope.basic.mailingAddress.state + ampersand;
+				tempData+="Mailing County=" + $scope.basic.mailingAddress.county + ampersand;
+				tempData+="Mailing Zip=" + $scope.basic.mailingAddress.zip + ampersand;
 			} else if ($scope.basic.mailingAddress.sameAs) {
-				tempData["Mailing Address"] = "Same As Home Address";
+				tempData+="Mailing Address=" + "Same As Home Address" + ampersand;
 			}
 
 			if($scope.children.choice.currentChildren == "yes") {
@@ -501,30 +499,30 @@ angular.module("fivestarApp")
 				tempConcat.forEach(function(child) {
 					tempConcatIt++;
 
-					tempData[tempConcatIt + "- Child Name"] = child.name;
-					tempData[child.name + " Date of Birth"] = child.dob;
-					tempData["Percentage for " + child.name] = child.percentage;
+					tempData+=tempConcatIt + " - Child Name=" + child.name + ampersand;
+					tempData+=child.name + " Date of Birth=" + child.dob + ampersand;
+					tempData+="Percentage for " + child.name + "=" + child.percentage + ampersand;
 				});
 
-				tempData["Guardians First Choice"] = $scope.trustees.guardian.firstChoice;
-				tempData["Guardians Second Choice"] = $scope.trustees.guardian.secondChoice;
+				tempData+="Guardians First Choice=" + $scope.trustees.guardian.firstChoice + ampersand;
+				tempData+="Guardians Second Choice=" + $scope.trustees.guardian.secondChoice + ampersand;
 				if($scope.trustees.coGuardians) {
-					tempData["Guardians Co-Guardians"] = "Acting as co-guardians";
+					tempData+="Guardians Co-Guardians=" + "Acting as co-guardians" + ampersand;
 				}
 
 				if($scope.special.specialChips) {
 					tempSpecial.forEach(function (child) {
 						tempSpecialIt++;
 
-						tempData["Special Needs Children - " + tempSpecialIt] = child;
+						tempData+="Special Needs Children - " + tempSpecialIt + "=" + child + ampersand;
 					});
 				}
 			}
 
-			tempData["Successor First Choice"] = $scope.trustees.successor.firstChoice;
-			tempData["Successor Second Choice"] = $scope.trustees.successor.secondChoice;
+			tempData+="Successor First Choice=" + $scope.trustees.successor.firstChoice + ampersand;
+			tempData+="Successor Second Choice=" + $scope.trustees.successor.secondChoice + ampersand;
 			if($scope.trustees.coTrustees) {
-				tempData["Successor Co-Trustees"] = "Acting as co-trustees";
+				tempData+="Successor Co-Trustees=" + "Acting as co-trustees" + ampersand;
 			}
 
 
@@ -534,7 +532,7 @@ angular.module("fivestarApp")
 				tempExcluded.forEach(function (child) {
 					tempExcludedIt++;
 
-					tempData["Excluded Children - " + tempExcludedIt] = child;
+					tempData+="Excluded Children - " + tempExcludedIt + "=" + child + ampersand;
 				});
 			}
 
@@ -549,22 +547,17 @@ angular.module("fivestarApp")
 			//		tempData.
 			//	}
 			//}
-
+			var newtempData = '';
+			newtempData+='Name='+tempData._name;
+			newtempData+='&Subject='+tempData._subject;
+			var tempDati = 'Name=Ghulam+Yaseen&Email=test%40email.com&Message=Test+Message&Home_state=Utah&zip=84005&another_argument=Test&_gotcha=&_subject=Test+Subject&_cc=yaseen_saqib2001%40yahoo.com';
 			console.warn(tempData);
 			$http({
 				url: "http://formspree.io/gabemeola@gmail.com",
 				method: "POST",
 				_subject: "Five Star Legal Form Submission",
 				_replyto: "gabe@fatecreations.com",
-				data: {
-					person :[
-							{ name: 'Homer', age: 50,   kids :[
-							{ name: 'Liza', age: 9 },
-							{ name: 'Bart', age: 8 },
-							{name: 'Maggie', age: 2 }
-						] }
-					]
-				},
+				data: tempData,
 				dataType: "json",
 				headers: {
 					'Accept': 'application/json',
