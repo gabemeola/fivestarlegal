@@ -159,7 +159,11 @@ angular.module("fivestarApp")
 		//Trustees Template
 		$scope.trustees = {
 			coTrustees: false,
-			coGuardians: false
+			coGuardians: false,
+			successor: {
+				firstChoice: null,
+				secondChoice: null
+			}
 		};
 		//End of Trustees
 
@@ -168,12 +172,6 @@ angular.module("fivestarApp")
 			choice: {
 				split: "equally",
 				age: "none"
-			},
-			childrenPercentage: {
-
-			},
-			beneficiaries: {
-
 			},
 			ageChoiceOne: {
 				first: null
@@ -186,6 +184,9 @@ angular.module("fivestarApp")
 				first: null,
 				second: null,
 				third: null
+			},
+			beneficiaries: {
+
 			},
 			beneficiariesAmount: 0,
 			percentageShow: false,
@@ -315,7 +316,9 @@ angular.module("fivestarApp")
 				wifePrimaryAgent: "yes"
 			},
 			individual: {
-				coAgents: false
+				coAgents: false,
+				firstChoice: null,
+				secondChoice: null
 			},
 			couple: {
 				husband: {
@@ -451,18 +454,119 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
+			var tempData = {
+				_subject: " New Five Star Legal Form Submission"
+			};
+
+			if($scope.basic.individualShow) {
+				tempData._replyto = $scope.basic.your.email;
+				tempData.Name = $scope.basic.your.fullName;
+				tempData.Date_of_Birth = $scope.basic.your.dob;
+				tempData.Email = $scope.basic.your.email;
+				tempData.Phone = $scope.basic.your.phone
+			} else if ($scope.basic.coupleShow) {
+				tempData.Husband_Name = $scope.basic.husband.fullName;
+				tempData.Husband_Date_of_Birth = $scope.basic.husband.dob;
+				tempData.Husband_Phone = $scope.basic.husband.phone;
+				tempData.Husband_Email = $scope.basic.husband.email;
+
+				tempData.Wife_Name = $scope.basic.wife.fullName;
+				tempData.Wife_Date_of_Birth = $scope.basic.wife.dob;
+				tempData.Wife_Phone = $scope.basic.wife.phone;
+				tempData.Wife_Email = $scope.basic.wife.email
+			};
+
+			tempData.Home_Address = $scope.basic.homeAddress.address;
+			tempData.Home_City = $scope.basic.homeAddress.city;
+			tempData.Home_State = $scope.basic.homeAddress.state;
+			tempData.Home_County = $scope.basic.homeAddress.county;
+			tempData.Home_Zip = $scope.basic.homeAddress.zip;
+			tempData.Home_Purchased_In = $scope.property.yearPurchased;
+			if(!$scope.basic.mailingAddress.sameAs) {
+				tempData.Mailing_Address = $scope.basic.mailingAddress.address;
+				tempData.Mailing_City = $scope.basic.mailingAddress.city;
+				tempData.Mailing_State = $scope.basic.mailingAddress.state;
+				tempData.Mailing_County = $scope.basic.mailingAddress.county;
+				tempData.Mailing_Zip = $scope.basic.mailingAddress.zip;
+			} else if ($scope.basic.mailingAddress.sameAs) {
+				tempData.Mailing_Address = "Same As Home Address";
+			}
+
+			if($scope.children.choice.currentChildren == "yes") {
+				var tempConcat = $scope.concatChildren,
+						tempConcatIt = 0,
+						tempSpecial = $scope.special.specialChips,
+						tempSpecialIt = 0;
+
+				tempConcat.forEach(function(child) {
+					tempConcatIt++;
+
+					tempData[tempConcatIt + "-Child_Name"] = child.name;
+					tempData[child.name + "_Date_of_Birth"] = child.dob;
+					tempData["Percentage for " + child.name] = child.percentage;
+				});
+
+				tempData.Guardians_First_Choice = $scope.trustees.guardian.firstChoice;
+				tempData.Guardians_Second_Choice = $scope.trustees.guardian.secondChoice;
+				if($scope.trustees.coGuardians) {
+					tempData.Guardians_CoGuardians = "Acting as co-guardians";
+				}
+
+				if($scope.special.specialChips) {
+					tempSpecial.forEach(function (child) {
+						tempSpecialIt++;
+
+						tempData["Special_Needs_Children-" + tempSpecialIt] = child;
+					});
+				}
+			}
+
+			tempData.Successor_First_Choice = $scope.trustees.successor.firstChoice;
+			tempData.Successor_Second_Choice = $scope.trustees.successor.secondChoice;
+			if($scope.trustees.coTrustees) {
+				tempData.Successor_CoTrustees = "Acting as co-trustees";
+			}
+
+			if($scope.beneficiaries.beneficiaries){
+				var tempBeneficairies = $scope.beneficiaries.beneficiaries,
+						tempBeneficairiesIt = 0;
+				tempBeneficairies.forEach(function (beneficiary) {
+					tempBeneficairiesIt++;
+
+					tempData[tempBeneficairiesIt + "-Beneficiary"] = beneficiary.name;
+					tempData["Percentage for " + beneficiary.name] = beneficiary.percentage;
+				});
+			}
+
+			if($scope.special.excludeChips) {
+				var tempExcluded = $scope.special.excludeChips,
+						tempExcludedIt = 0;
+				tempExcluded.forEach(function (child) {
+					tempExcludedIt++;
+
+					tempData["Excluded_Children-" + tempExcludedIt] = child;
+				});
+			}
+
+			//if($scope.basic.individualShow) {
+			//	tempData.Durable_Power_of_Attorney_First_Choice = $scope.power.individual.firstChoice;
+			//	tempData.Durable_Power_of_Attorney_Second_Choice = $scope.power.individual.secondChoice;
+			//	if($scope.power.individual.coAgents) {
+			//		tempData.Durable_Power_of_Attorney_CoAgents = "Acting as co-agents";
+			//	}
+			//} else if ($scope.basic.coupleShow) {
+			//	if ($scope.power.husbandPrimaryAgentShow) {
+			//		tempData.
+			//	}
+			//}
+
+			console.warn(tempData);
 			$http({
 				url: "http://formspree.io/gabemeola@gmail.com",
 				method: "POST",
-				data: {
-					_subject: "Five Star Legal Form Submission",
-					_cc: "gabe@fatecreations.com",
-					_replyto: "gabe@fatecreations.com",
-					Name: "Peter Gabriel",
-					kids: ["Gabe", "dave", "peter"],
-					email: "gabe@fatecreations.com",
-					Phone: "385-201-9950"
-				},
+				_subject: "Five Star Legal Form Submission",
+				_replyto: "gabe@fatecreations.com",
+				data: tempData,
 				dataType: "json"
 			}).then(function(res) {
 				console.warn(res);
