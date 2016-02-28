@@ -665,6 +665,7 @@ angular.module("fivestarApp")
 				console.warn(res);
 				$mdDialog.show(showAlert).then(function() {
 					window.location.href = "http://localhost:3333/#/home";
+					location.reload(true);
 				});
 			});
 			console.warn("review init ran");
