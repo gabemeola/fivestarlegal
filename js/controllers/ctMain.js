@@ -1,5 +1,5 @@
 angular.module("fivestarApp")
-	.controller("ctMain", ["$scope", "$mdSidenav", "$http", function($scope, $mdSidenav, $http) {
+	.controller("ctMain", ["$scope", "$mdSidenav", "$http", "$mdDialog", "$mdMedia", function($scope, $mdSidenav, $http, $mdDialog, $mdMedia) {
 
 		$scope.openLeftMenu = function(init) {
 			if(init == "open") {
@@ -641,6 +641,15 @@ angular.module("fivestarApp")
 			}
 
 			console.warn(tempData);
+
+			var showAlert = $mdDialog.alert()
+						.parent(angular.element(document.querySelector('#body')))
+						.clickOutsideToClose(false)
+						.title('Submission Successful!')
+						.textContent('Thank you for you submission, a representative will be contacting you soon.')
+						.ariaLabel('Alert Dialog Demo')
+						.ok('Got it!');
+
 			$http({
 				url: "http://formspree.io/bondesign@gmail.comfi",
 				method: "POST",
@@ -654,6 +663,9 @@ angular.module("fivestarApp")
 				}
 			}).then(function(res) {
 				console.warn(res);
+				$mdDialog.show(showAlert).then(function() {
+					window.location.href = "http://localhost:3333/#/home";
+				});
 			});
 			console.warn("review init ran");
 		};
