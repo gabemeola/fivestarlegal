@@ -454,7 +454,7 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
-			var tempData = "_subject=New Five Star Legal Form Submission&",
+			var tempData = "_subject=New Five Star Legal Form Submission&_subject=Five Star Legal Form Submission&_replyto=gabe@fatecreations.com&",
 					ampersand = "&";
 
 			if($scope.basic.individualShow) {
@@ -653,8 +653,6 @@ angular.module("fivestarApp")
 			$http({
 				url: "http://formspree.io/bondesign@gmail.com",
 				method: "POST",
-				_subject: "Five Star Legal Form Submission",
-				_replyto: "gabe@fatecreations.com",
 				data: tempData,
 				dataType: "json",
 				headers: {
