@@ -651,7 +651,7 @@ angular.module("fivestarApp")
 						.ok('Got it!');
 
 			$http({
-				url: "http://formspree.io/bondesign@gmail.comfi",
+				url: "http://formspree.io/bondesign@gmail.com",
 				method: "POST",
 				_subject: "Five Star Legal Form Submission",
 				_replyto: "gabe@fatecreations.com",
