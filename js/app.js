@@ -1,4 +1,7 @@
 angular.module("fivestarApp", ["firebase", "ui.router", "ngAnimate", "ngMaterial"])
+	.constant("FIRE", {
+		url: "https://lasermarketinggroup.firebaseio.com/lmgApp/"
+	})
 	.config(["$urlRouterProvider", "$stateProvider", function ($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise("/");
 		$stateProvider

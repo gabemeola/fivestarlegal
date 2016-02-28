@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html data-ng-app="fivestarApp">
 <head>
-	<title>Laser Marketing Group</title>
+	<title>5 Star Legal Documents</title>
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="stylesheet" type="text/css" href="/main.css"/>
 </head>
-	<body ng-controller="ctMain">
+	<body ng-controller="ctMain" id="body">
 		<md-sidenav md-component-id="left" class="navbar-left" md-is-locked-open="$mdMedia('min-width: 700px')">
 			<navbar></navbar>
 		</md-sidenav>
@@ -16,7 +16,8 @@
 		</md-button>
 		<div class="content-wrapper">
 			<div class="ui-view-wrapper">
-				<ui-view></ui-view>
+				<div id="topper"></div>
+				<ui-view autoscroll="true"></ui-view>
 			</div>
 		</div>
 		<script src="/js/bundle.js"></script>

@@ -77,7 +77,7 @@
 		<h2>Successor Trustee(s)</h2>
 		<p>{{trustees.successor.firstChoice}}</p>
 		<p>{{trustees.successor.secondChoice}}</p>
-		<p class="small" ng-show="trustees.coTrustees">acting as co-guardians</p>
+		<p class="small" ng-show="trustees.coTrustees">acting as co-trustees</p>
 	</div>
 	<divider></divider>
 	<div class="review-beneficiaries">
@@ -200,9 +200,11 @@
 				</div>
 			</div>
 			<div class="review-split">
+				<div class="review-busines-show" ng-show="property.businessShow">
 				<h2>Businesses</h2>
 				<div class="review-properties-business-repeater" ng-repeat="business in property.business">
 					<p>{{business.entity}}, <span class="caps">{{business.entityType}}</span></p>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -211,7 +213,7 @@
 	<div class="navigator">
 		<ul>
 			<a ui-sref="property"><li class="navigator-back-btn">← Back</li></a>
-			<a><li class="navigator-forward-btn">Next →</li></a>
+			<a ng-click="reviewInit()"><li class="navigator-forward-btn">Submit!</li></a>
 		</ul>
 	</div>
 </div>
