@@ -1,9 +1,9 @@
 .toggle-btn
 	display: block
-	visibility: visible
 	@media only screen and (min-width: $medDevice)
-		visibility: hidden
+		display: none
 .content-wrapper
+	margin-top: 50px
 	width: 65vw
 	height: 90vh
 	position: relative
@@ -11,6 +11,7 @@
 	padding-left: 2%
 	@media only screen and (max-width: $medDevice)
 		width: 100vw
+		margin-top: 10px
 	.ui-view-wrapper
 		width: 95%
 		height: auto
