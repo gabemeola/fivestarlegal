@@ -238,12 +238,17 @@ h5 {
   @media only screen and (max-width: 700px) {
     .data-wrapper {
       width: 95%;
-      padding-left: 1%; } }
+      padding-left: 5%; } }
   .data-wrapper h4.right {
-    width: 20%; }
+    width: 25%;
+    display: inline-block;
+    padding: 0 0 0 0; }
+    @media only screen and (max-width: 700px) {
+      .data-wrapper h4.right {
+        display: block; } }
   .data-wrapper .input-wrapper {
     position: relative;
-    width: 70%;
+    width: 63%;
     display: inline-block;
     height: 70px; }
     @media only screen and (max-width: 700px) {
@@ -316,13 +321,13 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
       outline: none; }
 
 .toggle-btn {
-  display: block;
-  visibility: visible; }
+  display: block; }
   @media only screen and (min-width: 700px) {
     .toggle-btn {
-      visibility: hidden; } }
+      display: none; } }
 
 .content-wrapper {
+  margin-top: 50px;
   width: 65vw;
   height: 90vh;
   position: relative;
@@ -330,7 +335,8 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
   padding-left: 2%; }
   @media only screen and (max-width: 700px) {
     .content-wrapper {
-      width: 100vw; } }
+      width: 100vw;
+      margin-top: 10px; } }
   .content-wrapper .ui-view-wrapper {
     width: 95%;
     height: auto;
@@ -340,8 +346,8 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
 
 .navigator {
   position: relative;
-  padding-top: 10px;
-  padding-bottom: 20px; }
+  padding-top: 30px;
+  padding-bottom: 80px; }
   .navigator .navigator-back-btn, .navigator .navigator-forward-btn {
     display: inline-block;
     border-radius: 15px;
@@ -371,6 +377,8 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
     height: 70%;
     margin: 0 auto;
     padding-top: 50px; }
+    .navbar .navbar-wrapper h1 {
+      padding-left: 6px; }
     .navbar .navbar-wrapper ul li a {
       font-size: 14px;
       font-weight: 500;
@@ -442,7 +450,7 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
       width: 50px; }
 
 #new-beneficaries {
-  width: 200px;
+  width: 135px;
   margin-top: 30px; }
 
 .beneficiaries-new .beneficiaries-repeater {
@@ -504,7 +512,7 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
     display: inline-block; }
 
 .property #new-property {
-  width: 180px; }
+  width: 115px; }
 
 .review p {
   color: #2c3e50;
