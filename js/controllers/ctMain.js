@@ -163,6 +163,10 @@ angular.module("fivestarApp")
 			successor: {
 				firstChoice: null,
 				secondChoice: null
+			},
+			guardian: {
+				firstChoice: null,
+				secondChoice: null
 			}
 		};
 		//End of Trustees
@@ -324,8 +328,24 @@ angular.module("fivestarApp")
 				husband: {
 					coAgents: false
 				},
+				husbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altHusbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
 				wife: {
 					coAgents: false
+				},
+				wifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altWifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
 				}
 			},
 			husbandPrimaryAgentShow: true,
@@ -368,8 +388,24 @@ angular.module("fivestarApp")
 				husband: {
 					coAgents: false
 				},
+				husbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altHusbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
 				wife: {
 					coAgents: false
+				},
+				wifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altWifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
 				}
 			},
 			husbandPrimaryAgentShow: true,
@@ -651,7 +687,7 @@ angular.module("fivestarApp")
 						.ok('Got it!');
 
 			$http({
-				url: "http://formspree.io/gabemeola@gmail.com",
+				url: "//formspree.io/gabemeola@gmail.com",
 				method: "POST",
 				data: tempData,
 				dataType: "json",
@@ -661,6 +697,16 @@ angular.module("fivestarApp")
 				}
 			}).then(function(res) {
 				console.warn(res);
+				$http({
+					url: "//formkeep.com/f/e729b7648d26",
+					method: "POST",
+					data: tempData,
+					dataType: "json",
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/x-www-form-urlencoded'
+					}
+				});
 				$mdDialog.show(showAlert).then(function() {
 					window.location.href = "http://localhost:3333/#/home";
 					location.reload(true);
