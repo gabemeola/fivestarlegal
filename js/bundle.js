@@ -66775,7 +66775,7 @@
 
 	"use strict";
 
-	angular.module("fivestarApp").controller("ctMain", ["$scope", "$mdSidenav", "$http", function ($scope, $mdSidenav, $http) {
+	angular.module("fivestarApp").controller("ctMain", ["$scope", "$mdSidenav", "$http", "$mdDialog", "$mdMedia", function ($scope, $mdSidenav, $http, $mdDialog, $mdMedia) {
 
 		$scope.openLeftMenu = function (init) {
 			if (init == "open") {
@@ -66939,6 +66939,10 @@
 			successor: {
 				firstChoice: null,
 				secondChoice: null
+			},
+			guardian: {
+				firstChoice: null,
+				secondChoice: null
 			}
 		};
 		//End of Trustees
@@ -66961,8 +66965,8 @@
 				second: null,
 				third: null
 			},
-			beneficiaries: {},
-			beneficiariesAmount: 0,
+			beneficiaries: [],
+			beneficiariesAmount: -1,
 			percentageShow: false,
 			oneShow: false,
 			twoShow: false,
@@ -67094,8 +67098,24 @@
 				husband: {
 					coAgents: false
 				},
+				husbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altHusbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
 				wife: {
 					coAgents: false
+				},
+				wifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altWifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
 				}
 			},
 			husbandPrimaryAgentShow: true,
@@ -67132,14 +67152,32 @@
 				wifePrimaryAgent: "yes"
 			},
 			individual: {
-				coAgents: false
+				coAgents: false,
+				firstChoice: null,
+				secondChoice: null
 			},
 			couple: {
 				husband: {
 					coAgents: false
 				},
+				husbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altHusbandPrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
 				wife: {
 					coAgents: false
+				},
+				wifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
+				},
+				altWifePrimaryAgent: {
+					firstChoice: null,
+					secondChoice: null
 				}
 			},
 			husbandPrimaryAgentShow: true,
@@ -67176,11 +67214,11 @@
 				otherRealEstate: "no",
 				business: "no"
 			},
-			estate: {},
-			business: {},
+			estate: [],
+			business: [],
 			yearPurchased: null,
-			estateAmount: 0,
-			businessAmount: 0,
+			estateAmount: -1,
+			businessAmount: -1,
 			prepareDeedShow: false,
 			otherRealEstateShow: false,
 			businessShow: false
@@ -67220,42 +67258,43 @@
 
 		//Review Template
 		$scope.reviewInit = function () {
-			var tempData = {
-				_subject: " New Five Star Legal Form Submission"
-			};
+			var tempData = "_subject=New Five Star Legal Form Submission&",
+			    ampersand = "&";
 
 			if ($scope.basic.individualShow) {
-				tempData._replyto = $scope.basic.your.email;
-				tempData.Name = $scope.basic.your.fullName;
-				tempData["Date of Birth"] = $scope.basic.your.dob;
-				tempData.Email = $scope.basic.your.email;
-				tempData.Phone = $scope.basic.your.phone;
+				tempData += "_replyto=" + $scope.basic.your.email + ampersand;
+				tempData += "Name=" + $scope.basic.your.fullName + ampersand;
+				tempData += "Date of Birth=" + $scope.basic.your.dob + ampersand;
+				tempData += "Email=" + $scope.basic.your.email + ampersand;
+				tempData += "Phone=" + $scope.basic.your.phone + ampersand;
 			} else if ($scope.basic.coupleShow) {
-				tempData["Husband Name"] = $scope.basic.husband.fullName;
-				tempData["Husband Date of Birth"] = $scope.basic.husband.dob;
-				tempData["Husband Phone"] = $scope.basic.husband.phone;
-				tempData["Husband Email"] = $scope.basic.husband.email;
-
-				tempData["Wife Name"] = $scope.basic.wife.fullName;
-				tempData["Wife Date of Birth"] = $scope.basic.wife.dob;
-				tempData["Wife Phone"] = $scope.basic.wife.phone;
-				tempData["Wife Email"] = $scope.basic.wife.email;
+				tempData += "_replyto=" + $scope.basic.husband.email + ampersand;
+				tempData += "Husband Name=" + $scope.basic.husband.fullName + ampersand;
+				tempData += "Husband Date of Birth=" + $scope.basic.husband.dob + ampersand;
+				tempData += "Husband Phone=" + $scope.basic.husband.phone + ampersand;
+				tempData += "Husband Email=" + $scope.basic.husband.email + ampersand;
+				tempData += "Wife Name=" + $scope.basic.wife.fullName + ampersand;
+				tempData += "Wife Date of Birth=" + $scope.basic.wife.dob + ampersand;
+				tempData += "Wife Phone=" + $scope.basic.wife.phone + ampersand;
+				tempData += "Wife Email=" + $scope.basic.wife.email + ampersand;
 			};
 
-			tempData["Home Address"] = $scope.basic.homeAddress.address;
-			tempData["Home City"] = $scope.basic.homeAddress.city;
-			tempData["Home State"] = $scope.basic.homeAddress.state;
-			tempData["Home County"] = $scope.basic.homeAddress.county;
-			tempData["Home Zip"] = $scope.basic.homeAddress.zip;
-			tempData["Home Purchased In"] = $scope.property.yearPurchased;
+			tempData += "Home Address=" + $scope.basic.homeAddress.address + ampersand;
+			tempData += "Home City=" + $scope.basic.homeAddress.city + ampersand;
+			tempData += "Home State=" + $scope.basic.homeAddress.state + ampersand;
+			tempData += "Home County=" + $scope.basic.homeAddress.county + ampersand;
+			tempData += "Home Zip=" + $scope.basic.homeAddress.zip + ampersand;
+			if ($scope.property.prepareDeedShow) {
+				tempData += "Home Purchased In=" + $scope.property.yearPurchased + ampersand;
+			}
 			if (!$scope.basic.mailingAddress.sameAs) {
-				tempData["Mailing Address"] = $scope.basic.mailingAddress.address;
-				tempData["Mailing City"] = $scope.basic.mailingAddress.city;
-				tempData["Mailing State"] = $scope.basic.mailingAddress.state;
-				tempData["Mailing County"] = $scope.basic.mailingAddress.county;
-				tempData["Mailing Zip"] = $scope.basic.mailingAddress.zip;
+				tempData += "Mailing Address=" + $scope.basic.mailingAddress.address + ampersand;
+				tempData += "Mailing City=" + $scope.basic.mailingAddress.city + ampersand;
+				tempData += "Mailing State=" + $scope.basic.mailingAddress.state + ampersand;
+				tempData += "Mailing County=" + $scope.basic.mailingAddress.county + ampersand;
+				tempData += "Mailing Zip=" + $scope.basic.mailingAddress.zip + ampersand;
 			} else if ($scope.basic.mailingAddress.sameAs) {
-				tempData["Mailing Address"] = "Same As Home Address";
+				tempData += "Mailing Address=" + "Same As Home Address" + ampersand;
 			}
 
 			if ($scope.children.choice.currentChildren == "yes") {
@@ -67267,42 +67306,25 @@
 				tempConcat.forEach(function (child) {
 					tempConcatIt++;
 
-					tempData[tempConcatIt + "- Child Name"] = child.name;
-					tempData[child.name + " Date of Birth"] = child.dob;
-					tempData["Percentage for " + child.name] = child.percentage;
+					tempData += tempConcatIt + " - Child Name=" + child.name + ampersand;
+					tempData += child.name + " Date of Birth=" + child.dob + ampersand;
+					tempData += "Percentage for " + child.name + "=" + child.percentage + "%" + ampersand;
 				});
 
-				tempData["Guardians First Choice"] = $scope.trustees.guardian.firstChoice;
-				tempData["Guardians Second Choice"] = $scope.trustees.guardian.secondChoice;
+				tempData += "Guardians First Choice=" + $scope.trustees.guardian.firstChoice + ampersand;
+				tempData += "Guardians Second Choice=" + $scope.trustees.guardian.secondChoice + ampersand;
 				if ($scope.trustees.coGuardians) {
-					tempData["Guardians Co-Guardians"] = "Acting as co-guardians";
+					tempData += "Guardians Co-Guardians=" + "Acting as co-guardians" + ampersand;
 				}
 
 				if ($scope.special.specialChips) {
 					tempSpecial.forEach(function (child) {
 						tempSpecialIt++;
 
-						tempData["Special Needs Children - " + tempSpecialIt] = child;
+						tempData += "Special Needs Children - " + tempSpecialIt + "=" + child + ampersand;
 					});
 				}
 			}
-
-			tempData["Successor First Choice"] = $scope.trustees.successor.firstChoice;
-			tempData["Successor Second Choice"] = $scope.trustees.successor.secondChoice;
-			if ($scope.trustees.coTrustees) {
-				tempData["Successor Co-Trustees"] = "Acting as co-trustees";
-			}
-
-			//if($scope.beneficiaries.beneficiaries){
-			//	var tempBeneficairies = $scope.beneficiaries.beneficiaries,
-			//			tempBeneficairiesIt = 0;
-			//	tempBeneficairies.forEach(function (beneficiary) {
-			//		tempBeneficairiesIt++;
-			//
-			//		tempData[tempBeneficairiesIt + "-Beneficiary"] = beneficiary.name;
-			//		tempData["Percentage for " + beneficiary.name] = beneficiary.percentage;
-			//	});
-			//}
 
 			if ($scope.special.excludeChips) {
 				var tempExcluded = $scope.special.excludeChips,
@@ -67310,31 +67332,126 @@
 				tempExcluded.forEach(function (child) {
 					tempExcludedIt++;
 
-					tempData["Excluded Children - " + tempExcludedIt] = child;
+					tempData += "Excluded Children - " + tempExcludedIt + "=" + child + ampersand;
 				});
 			}
 
-			//if($scope.basic.individualShow) {
-			//	tempData.Durable_Power_of_Attorney_First_Choice = $scope.power.individual.firstChoice;
-			//	tempData.Durable_Power_of_Attorney_Second_Choice = $scope.power.individual.secondChoice;
-			//	if($scope.power.individual.coAgents) {
-			//		tempData.Durable_Power_of_Attorney_CoAgents = "Acting as co-agents";
-			//	}
-			//} else if ($scope.basic.coupleShow) {
-			//	if ($scope.power.husbandPrimaryAgentShow) {
-			//		tempData.
-			//	}
-			//}
+			if ($scope.beneficiaries.beneficiaries) {
+				var tempBeneficairies = $scope.beneficiaries.beneficiaries,
+				    tempBeneficairiesIt = 0;
+				tempBeneficairies.forEach(function (beneficiary) {
+					tempBeneficairiesIt++;
+					console.warn("For Each on bene ran");
+					tempData += tempBeneficairiesIt + " - Beneficiary=" + beneficiary.name + ampersand;
+					tempData += "Percentage for " + beneficiary.name + "=" + beneficiary.percentage + "%" + ampersand;
+				});
+			}
+
+			tempData += "Successor First Choice=" + $scope.trustees.successor.firstChoice + ampersand;
+			tempData += "Successor Second Choice=" + $scope.trustees.successor.secondChoice + ampersand;
+			if ($scope.trustees.coTrustees) {
+				tempData += "Successor Co-Trustees=" + "Acting as co-trustees" + ampersand;
+			}
+
+			if ($scope.basic.individualShow) {
+				tempData += "Durable Power of Attorney: First Choice=" + $scope.power.individual.firstChoice + ampersand;
+				tempData += "Durable Power of Attorney: Second Choice=" + $scope.power.individual.secondChoice + ampersand;
+				if ($scope.power.individual.coAgents) {
+					tempData += "Durable Power of Attorney: CoAgents=" + "Acting as co-agents" + ampersand;
+				}
+			} else if ($scope.basic.coupleShow) {
+				if ($scope.power.husbandPrimaryAgentShow) {
+					tempData += "Durable Power of Attorney: Husband=" + "My spouse will be my primary agent." + ampersand;
+					tempData += "Durable Power of Attorney: Husband's First Choice=" + $scope.power.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData += "Durable Power of Attorney: Husband's Second Choice=" + $scope.power.couple.husbandPrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.power.altHusbandPrimaryAgentShow) {
+					tempData += "Durable Power of Attorney: Husband's First Choice=" + $scope.power.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData += "Durable Power of Attorney: Husband's Second Choice=" + $scope.power.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					if ($scope.power.couple.husband.coAgents) {
+						tempData += "Durable Power of Attorney: Husband: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
+
+				if ($scope.power.wifePrimaryAgentShow) {
+					tempData += "Durable Power of Attorney: Wife=" + "My spouse will be my primary agent." + ampersand;
+					tempData += "Durable Power of Attorney: Wife's First Choice=" + $scope.power.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData += "Durable Power of Attorney: Wife's Second Choice=" + $scope.power.couple.wifePrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.power.altWifePrimaryAgentShow) {
+					tempData += "Durable Power of Attorney: Wife's First Choice=" + $scope.power.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData += "Durable Power of Attorney: Wife's Second Choice=" + $scope.power.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					if ($scope.power.couple.wife.coAgents) {
+						tempData += "Durable Power of Attorney: Wife: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
+			}
+
+			if ($scope.basic.individualShow) {
+				tempData += "Medical Power of Attorney: First Choice=" + $scope.healthcare.individual.firstChoice + ampersand;
+				tempData += "Medical Power of Attorney: Second Choice=" + $scope.healthcare.individual.secondChoice + ampersand;
+				if ($scope.healthcare.individual.coAgents) {
+					tempData += "Medical Power of Attorney: CoAgents=" + "Acting as co-agents" + ampersand;
+				}
+			} else if ($scope.basic.coupleShow) {
+				if ($scope.healthcare.husbandPrimaryAgentShow) {
+					tempData += "Medical Power of Attorney: Husband=" + "My spouse will be my primary agent." + ampersand;
+					tempData += "Medical Power of Attorney: Husband's First Choice=" + $scope.healthcare.couple.husbandPrimaryAgent.firstChoice + ampersand;
+					tempData += "Medical Power of Attorney: Husband's Second Choice=" + $scope.healthcare.couple.husbandPrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.healthcare.altHusbandPrimaryAgentShow) {
+					tempData += "Medical Power of Attorney: Husband's First Choice=" + $scope.healthcare.couple.altHusbandPrimaryAgent.firstChoice + ampersand;
+					tempData += "Medical Power of Attorney: Husband's Second Choice=" + $scope.healthcare.couple.altHusbandPrimaryAgent.secondChoice + ampersand;
+					if ($scope.healthcare.couple.husband.coAgents) {
+						tempData += "Medical Power of Attorney: Husband: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
+
+				if ($scope.healthcare.wifePrimaryAgentShow) {
+					tempData += "Medical Power of Attorney: Wife=" + "My spouse will be my primary agent." + ampersand;
+					tempData += "Medical Power of Attorney: Wife's First Choice=" + $scope.healthcare.couple.wifePrimaryAgent.firstChoice + ampersand;
+					tempData += "Medical Power of Attorney: Wife's Second Choice=" + $scope.healthcare.couple.wifePrimaryAgent.secondChoice + ampersand;
+				} else if ($scope.healthcare.altWifePrimaryAgentShow) {
+					tempData += "Medical Power of Attorney: Wife's First Choice=" + $scope.healthcare.couple.altWifePrimaryAgent.firstChoice + ampersand;
+					tempData += "Medical Power of Attorney: Wife's Second Choice=" + $scope.healthcare.couple.altWifePrimaryAgent.secondChoice + ampersand;
+					if ($scope.healthcare.couple.wife.coAgents) {
+						tempData += "Medical Power of Attorney: Wife: Co-Agents=" + "Acting as co-agents" + ampersand;
+					}
+				}
+			}
+
+			if ($scope.property.prepareDeedShow) {
+				tempData += "Primary Residance=" + "Please prepare the deed for my primary residence." + ampersand;
+			}
+			if ($scope.property.otherRealEstateShow) {
+				var tempEstate = $scope.property.estate,
+				    otherRealEstateIt = 0;
+				tempEstate.forEach(function (estate) {
+					otherRealEstateIt++;
+					tempData += otherRealEstateIt + " - Estate=" + "true" + ampersand;
+					tempData += otherRealEstateIt + " Address=" + estate.address + ampersand;
+					tempData += otherRealEstateIt + " City=" + estate.city + ampersand;
+					tempData += otherRealEstateIt + " County=" + estate.county + ampersand;
+					tempData += otherRealEstateIt + " State=" + estate.state + ampersand;
+					tempData += otherRealEstateIt + " Zip=" + estate.zip + ampersand;
+					tempData += otherRealEstateIt + " Purchase Date=" + estate.purchaseDate + ampersand;
+				});
+			}
+			if ($scope.property.businessShow) {
+				var tempBusiness = $scope.property.business,
+				    otherBusinessIt = 0;
+				tempBusiness.forEach(function (business) {
+					otherBusinessIt++;
+					tempData += otherBusinessIt + " - Business=" + business.entity + ampersand;
+					tempData += business.entity + " Entity Type=" + business.entityType + ampersand;
+				});
+			}
 
 			console.warn(tempData);
+
+			var showAlert = $mdDialog.alert().parent(angular.element(document.querySelector('#body'))).clickOutsideToClose(false).title('Submission Successful!').textContent('Thank you for you submission, a representative will be contacting you soon.').ariaLabel('Alert Dialog Demo').ok('Got it!');
+
 			$http({
-				url: "http://formspree.io/gabemeola@gmail.com",
+				url: "//formspree.io/gabemeola@gmail.com",
 				method: "POST",
-				_subject: "Five Star Legal Form Submission",
-				_replyto: "gabe@fatecreations.com",
-				data: {
-					person: [{ name: 'Homer', age: 50, kids: [{ name: 'Liza', age: 9 }, { name: 'Bart', age: 8 }, { name: 'Maggie', age: 2 }] }]
-				},
+				data: tempData,
 				dataType: "json",
 				headers: {
 					'Accept': 'application/json',
@@ -67342,6 +67459,20 @@
 				}
 			}).then(function (res) {
 				console.warn(res);
+				$http({
+					url: "//formkeep.com/f/46f2d8b29675",
+					method: "POST",
+					data: tempData,
+					dataType: "json",
+					headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/x-www-form-urlencoded'
+					}
+				});
+				$mdDialog.show(showAlert).then(function () {
+					window.location.href = "http://localhost:3333/#/home";
+					location.reload(true);
+				});
 			});
 			console.warn("review init ran");
 		};
