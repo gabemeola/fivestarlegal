@@ -382,7 +382,9 @@ angular.module("fivestarApp")
 				wifePrimaryAgent: "yes"
 			},
 			individual: {
-				coAgents: false
+				coAgents: false,
+				firstChoice: null,
+				secondChoice: null
 			},
 			couple: {
 				husband: {
@@ -490,16 +492,17 @@ angular.module("fivestarApp")
 
 		//Review Template
 		$scope.reviewInit = function() {
-			var tempData = "_subject=New Five Star Legal Form Submission&_subject=Five Star Legal Form Submission&_replyto=gabe@fatecreations.com&",
+			var tempData = "_subject=New Five Star Legal Form Submission&",
 					ampersand = "&";
 
 			if($scope.basic.individualShow) {
-				tempData+="_replyto=" + $scope.basic.your.email + "&";
-				tempData+="Name=" + $scope.basic.your.fullName + "&";
-				tempData+="Date of Birth=" + $scope.basic.your.dob + "&";
-				tempData+="Email=" + $scope.basic.your.email + "&";
-				tempData+="Phone=" + $scope.basic.your.phone; + "&";
+				tempData+="_replyto=" + $scope.basic.your.email + ampersand;
+				tempData+="Name=" + $scope.basic.your.fullName + ampersand;
+				tempData+="Date of Birth=" + $scope.basic.your.dob + ampersand;
+				tempData+="Email=" + $scope.basic.your.email + ampersand;
+				tempData+="Phone=" + $scope.basic.your.phone + ampersand
 			} else if ($scope.basic.coupleShow) {
+				tempData+="_replyto=" + $scope.basic.husband.email + ampersand;
 				tempData+="Husband Name=" + $scope.basic.husband.fullName + ampersand;
 				tempData+="Husband Date of Birth=" + $scope.basic.husband.dob + ampersand;
 				tempData+="Husband Phone=" + $scope.basic.husband.phone + ampersand;
@@ -539,7 +542,7 @@ angular.module("fivestarApp")
 
 					tempData+=tempConcatIt + " - Child Name=" + child.name + ampersand;
 					tempData+=child.name + " Date of Birth=" + child.dob + ampersand;
-					tempData+="Percentage for " + child.name + "=" + child.percentage + ampersand;
+					tempData+="Percentage for " + child.name + "=" + child.percentage + "%" + ampersand;
 				});
 
 				tempData+="Guardians First Choice=" + $scope.trustees.guardian.firstChoice + ampersand;
@@ -574,7 +577,7 @@ angular.module("fivestarApp")
 					tempBeneficairiesIt++;
 					console.warn("For Each on bene ran");
 					tempData+=tempBeneficairiesIt + " - Beneficiary=" + beneficiary.name + ampersand;
-					tempData+="Percentage for " + beneficiary.name + "=" + beneficiary.percentage + ampersand;
+					tempData+="Percentage for " + beneficiary.name + "=" + beneficiary.percentage + "%" + ampersand;
 				});
 			}
 
