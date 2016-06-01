@@ -5,3 +5,4 @@ firebase.json
 node_modules
 bundle.js
 .idea
+dist/
