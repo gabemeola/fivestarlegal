@@ -1,7 +1,7 @@
 angular.module("fivestarApp")
 	.directive("navbar", function() {
 		return {
-			templateUrl: "./templates/_navbar.html"
+			template: require("../templates/_navbar.html")
 		}
 	})
 	.directive("divider", function() {
