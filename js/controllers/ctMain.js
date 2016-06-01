@@ -680,7 +680,7 @@ angular.module("fivestarApp")
 						.ok('Got it!');
 
 			$http({
-				url: "//formspree.io/gabemeola@gmail.com",
+				url: "//formspree.io/app@fivestarlegaldocuments.com",
 				method: "POST",
 				data: tempData,
 				dataType: "json",
@@ -700,7 +700,7 @@ angular.module("fivestarApp")
 					}
 				});
 				$mdDialog.show(showAlert).then(function() {
-					window.location.href = "http://localhost:3333/#/home";
+					window.location.href = "//fivestarlegaldocuments.com";
 					location.reload(true);
 				});
 			});
