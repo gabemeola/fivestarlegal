@@ -8,14 +8,7 @@ module.exports = {
 	},
 	output: {
 		path: "dist/",
-		filename: "bundle.js",
-		publicPath: "//localhost:3333/dist/" //Bundled Javascript Webpack Spits out.
-	},
-	devServer: { //Allows webpack-dev-server to be live reloaded
-		inline: true,
-		hot: true,
-		port: 3333,
-		watch: true
+		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
 	},
 	module: {
 		loaders: [
