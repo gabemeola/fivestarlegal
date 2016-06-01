@@ -28,8 +28,6 @@ angular.module("fivestarApp")
 			concater(husbandChildren);
 			concater(wifeChildren);
 			$scope.concatChildren = splitedChilds;
-			console.log($scope.special.specialChips);
-			console.log($scope.special.excludedChips);
 		};
 		//Basic Template
 		$scope.basic = {
@@ -146,13 +144,11 @@ angular.module("fivestarApp")
 		};
 		$scope.addnewChild = function(init) {
 			$scope.children.childAmount++;
-			console.warn($scope.children.childAmount);
 			var childrenAmount = $scope.children.childAmount;
 			$scope.children[init + 'Children'][childrenAmount] = {
 				name: null,
 				dob: null
 			};
-			console.warn($scope.children);
 		};
 		//End of Children
 
@@ -227,13 +223,11 @@ angular.module("fivestarApp")
 		};
 		$scope.addnewBeneficiaries = function(init) {
 			$scope.beneficiaries.beneficiariesAmount++;
-			console.warn($scope.beneficiaries.beneficiariesAmount);
 			var beneficiariesAmount = $scope.beneficiaries.beneficiariesAmount;
 			$scope.beneficiaries.beneficiaries[beneficiariesAmount] = {
 				name: null,
 				percentage: null
 			};
-			console.warn($scope.beneficiaries);
 		};
 		//End of Beneficiaries Template
 
@@ -480,13 +474,11 @@ angular.module("fivestarApp")
 		};
 		$scope.addnewProperty = function(init) {
 			$scope.property[init + 'Amount']++;
-			console.warn($scope.property[init + 'Amount']);
 			var amount = $scope.property[init + 'Amount'];
 			$scope.property[init][amount] = {
 				name: null,
 				percentage: null
 			};
-			console.warn($scope.property);
 		};
 		//End of Property Template
 
@@ -575,7 +567,6 @@ angular.module("fivestarApp")
 					tempBeneficairiesIt = 0;
 				tempBeneficairies.forEach(function (beneficiary) {
 					tempBeneficairiesIt++;
-					console.warn("For Each on bene ran");
 					tempData+=tempBeneficairiesIt + " - Beneficiary=" + beneficiary.name + ampersand;
 					tempData+="Percentage for " + beneficiary.name + "=" + beneficiary.percentage + "%" + ampersand;
 				});
@@ -679,7 +670,6 @@ angular.module("fivestarApp")
 				});
 			}
 
-			console.warn(tempData);
 
 			var showAlert = $mdDialog.alert()
 						.parent(angular.element(document.querySelector('#body')))
@@ -699,7 +689,6 @@ angular.module("fivestarApp")
 					'Content-Type': 'application/x-www-form-urlencoded'
 				}
 			}).then(function(res) {
-				console.warn(res);
 				$http({
 					url: "//formkeep.com/f/46f2d8b29675",
 					method: "POST",
@@ -715,7 +704,6 @@ angular.module("fivestarApp")
 					location.reload(true);
 				});
 			});
-			console.warn("review init ran");
 		};
 		//End of Review Template
 	}]);
