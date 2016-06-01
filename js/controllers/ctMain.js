@@ -700,8 +700,7 @@ angular.module("fivestarApp")
 					}
 				});
 				$mdDialog.show(showAlert).then(function() {
-					window.location.href = "//fivestarlegaldocuments.com";
-					location.reload(true);
+					window.location.href = "//www.fivestarlegaldocuments.com";
 				});
 			});
 		};
